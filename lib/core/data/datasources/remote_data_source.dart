@@ -32,10 +32,11 @@ base class RemoteDataSource {
 
           handler.next(options);
         },
-        onResponse: (Response response, handler) {
+        onResponse:
+            (Response<dynamic> response, ResponseInterceptorHandler handler) {
           handler.next(response);
         },
-        onError: (DioException error, handler) async {
+        onError: (DioException error, ErrorInterceptorHandler handler) async {
           handler.next(error);
         },
       ),
@@ -50,7 +51,9 @@ base class RemoteDataSource {
     Future<Response<T>> request() => dio.delete<T>(
           _path(apiEndpoint),
           options: (token != null)
-              ? Options(headers: {'Authorization': 'Bearer $token'})
+              ? Options(
+                  headers: <String, String>{'Authorization': 'Bearer $token'},
+                )
               : Options(),
         );
 
@@ -66,9 +69,9 @@ base class RemoteDataSource {
   }) {
     Options localOptions = options ?? Options();
     if (token != null) {
-      final headers = localOptions.headers;
+      final Map<String, dynamic>? headers = localOptions.headers;
       localOptions = localOptions.copyWith(
-        headers: {
+        headers: <String, String>{
           if (headers != null) ...headers,
           'Authorization': 'Bearer $token',
         },
@@ -93,7 +96,9 @@ base class RemoteDataSource {
           _path(apiEndpoint),
           data: body,
           options: (token != null)
-              ? Options(headers: {'Authorization': 'Bearer $token'})
+              ? Options(
+                  headers: <String, String>{'Authorization': 'Bearer $token'},
+                )
               : Options(),
         );
 
@@ -109,7 +114,9 @@ base class RemoteDataSource {
           _path(apiEndpoint),
           data: data,
           options: (token != null)
-              ? Options(headers: {'Authorization': 'Bearer $token'})
+              ? Options(
+                  headers: <String, String>{'Authorization': 'Bearer $token'},
+                )
               : Options(),
         );
 
@@ -126,7 +133,9 @@ base class RemoteDataSource {
         _path(apiEndpoint),
         queryParameters: _queryParameters(queryParameters),
         options: (token != null)
-            ? Options(headers: {'Authorization': 'Bearer $token'})
+            ? Options(
+                headers: <String, String>{'Authorization': 'Bearer $token'},
+              )
             : Options(),
       );
     }
@@ -140,13 +149,15 @@ base class RemoteDataSource {
     Map<String, dynamic>? queryParameters,
     String? token,
   }) async {
-    Future<Response> request() async {
+    Future<Response<dynamic>> request() async {
       return dio.download(
         _path(apiEndpoint),
         savePath,
         queryParameters: _queryParameters(queryParameters),
         options: (token != null)
-            ? Options(headers: {'Authorization': 'Bearer $token'})
+            ? Options(
+                headers: <String, String>{'Authorization': 'Bearer $token'},
+              )
             : Options(),
       );
     }
@@ -182,7 +193,7 @@ base class RemoteDataSource {
   Map<String, dynamic> _queryParameters(
     Map<String, dynamic>? requestQueryParameters,
   ) {
-    final Map<String, dynamic> apiQueryParameters = {};
+    final Map<String, dynamic> apiQueryParameters = <String, dynamic>{};
     if (requestQueryParameters != null) {
       apiQueryParameters.addAll(requestQueryParameters);
     }
