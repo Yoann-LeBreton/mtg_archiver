@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mtg_archiver/features/search/data/models/card_model.dart';
+import 'package:mtg_archiver/features/search/domain/entities/search_cards_result_entity.dart';
 
 part 'search_cards_result_model.freezed.dart';
 part 'search_cards_result_model.g.dart';
@@ -15,4 +16,12 @@ class SearchCardsResultModel with _$SearchCardsResultModel {
 
   factory SearchCardsResultModel.fromJson(dynamic json) =>
       _$SearchCardsResultModelFromJson(json);
+}
+
+extension SearchCardsResultModelX on SearchCardsResultModel {
+  SearchCardsResultEntity toDomain() => SearchCardsResultEntity(
+        totalCards: totalCards,
+        hasMore: hasMore,
+        results: results.map((CardModel result) => result.toDomain()).toList(),
+      );
 }
