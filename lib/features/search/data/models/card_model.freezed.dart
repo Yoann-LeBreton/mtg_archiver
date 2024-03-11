@@ -26,6 +26,14 @@ mixin _$CardModel {
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'released_at', defaultValue: '')
   String get releaseDate => throw _privateConstructorUsedError;
+  @JsonKey(name: 'type_line', defaultValue: '')
+  String get type => throw _privateConstructorUsedError;
+  @JsonKey(name: 'oracle_text', defaultValue: '')
+  String get effect => throw _privateConstructorUsedError;
+  @JsonKey(name: 'colors', defaultValue: <String>[])
+  List<String> get colors => throw _privateConstructorUsedError;
+  @JsonKey(name: 'image_uris', defaultValue: null)
+  ImageUrisModel? get imageUris => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +49,14 @@ abstract class $CardModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id', defaultValue: '') String id,
       @JsonKey(name: 'name', defaultValue: '') String name,
-      @JsonKey(name: 'released_at', defaultValue: '') String releaseDate});
+      @JsonKey(name: 'released_at', defaultValue: '') String releaseDate,
+      @JsonKey(name: 'type_line', defaultValue: '') String type,
+      @JsonKey(name: 'oracle_text', defaultValue: '') String effect,
+      @JsonKey(name: 'colors', defaultValue: <String>[]) List<String> colors,
+      @JsonKey(name: 'image_uris', defaultValue: null)
+      ImageUrisModel? imageUris});
+
+  $ImageUrisModelCopyWith<$Res>? get imageUris;
 }
 
 /// @nodoc
@@ -60,6 +75,10 @@ class _$CardModelCopyWithImpl<$Res, $Val extends CardModel>
     Object? id = null,
     Object? name = null,
     Object? releaseDate = null,
+    Object? type = null,
+    Object? effect = null,
+    Object? colors = null,
+    Object? imageUris = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -74,7 +93,35 @@ class _$CardModelCopyWithImpl<$Res, $Val extends CardModel>
           ? _value.releaseDate
           : releaseDate // ignore: cast_nullable_to_non_nullable
               as String,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      effect: null == effect
+          ? _value.effect
+          : effect // ignore: cast_nullable_to_non_nullable
+              as String,
+      colors: null == colors
+          ? _value.colors
+          : colors // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      imageUris: freezed == imageUris
+          ? _value.imageUris
+          : imageUris // ignore: cast_nullable_to_non_nullable
+              as ImageUrisModel?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ImageUrisModelCopyWith<$Res>? get imageUris {
+    if (_value.imageUris == null) {
+      return null;
+    }
+
+    return $ImageUrisModelCopyWith<$Res>(_value.imageUris!, (value) {
+      return _then(_value.copyWith(imageUris: value) as $Val);
+    });
   }
 }
 
@@ -89,7 +136,15 @@ abstract class _$$CardModelImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id', defaultValue: '') String id,
       @JsonKey(name: 'name', defaultValue: '') String name,
-      @JsonKey(name: 'released_at', defaultValue: '') String releaseDate});
+      @JsonKey(name: 'released_at', defaultValue: '') String releaseDate,
+      @JsonKey(name: 'type_line', defaultValue: '') String type,
+      @JsonKey(name: 'oracle_text', defaultValue: '') String effect,
+      @JsonKey(name: 'colors', defaultValue: <String>[]) List<String> colors,
+      @JsonKey(name: 'image_uris', defaultValue: null)
+      ImageUrisModel? imageUris});
+
+  @override
+  $ImageUrisModelCopyWith<$Res>? get imageUris;
 }
 
 /// @nodoc
@@ -106,6 +161,10 @@ class __$$CardModelImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? releaseDate = null,
+    Object? type = null,
+    Object? effect = null,
+    Object? colors = null,
+    Object? imageUris = freezed,
   }) {
     return _then(_$CardModelImpl(
       id: null == id
@@ -120,6 +179,22 @@ class __$$CardModelImplCopyWithImpl<$Res>
           ? _value.releaseDate
           : releaseDate // ignore: cast_nullable_to_non_nullable
               as String,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      effect: null == effect
+          ? _value.effect
+          : effect // ignore: cast_nullable_to_non_nullable
+              as String,
+      colors: null == colors
+          ? _value._colors
+          : colors // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      imageUris: freezed == imageUris
+          ? _value.imageUris
+          : imageUris // ignore: cast_nullable_to_non_nullable
+              as ImageUrisModel?,
     ));
   }
 }
@@ -130,8 +205,13 @@ class _$CardModelImpl implements _CardModel {
   const _$CardModelImpl(
       {@JsonKey(name: 'id', defaultValue: '') required this.id,
       @JsonKey(name: 'name', defaultValue: '') required this.name,
-      @JsonKey(name: 'released_at', defaultValue: '')
-      required this.releaseDate});
+      @JsonKey(name: 'released_at', defaultValue: '') required this.releaseDate,
+      @JsonKey(name: 'type_line', defaultValue: '') required this.type,
+      @JsonKey(name: 'oracle_text', defaultValue: '') required this.effect,
+      @JsonKey(name: 'colors', defaultValue: <String>[])
+      required final List<String> colors,
+      @JsonKey(name: 'image_uris', defaultValue: null) this.imageUris})
+      : _colors = colors;
 
   factory _$CardModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CardModelImplFromJson(json);
@@ -145,10 +225,28 @@ class _$CardModelImpl implements _CardModel {
   @override
   @JsonKey(name: 'released_at', defaultValue: '')
   final String releaseDate;
+  @override
+  @JsonKey(name: 'type_line', defaultValue: '')
+  final String type;
+  @override
+  @JsonKey(name: 'oracle_text', defaultValue: '')
+  final String effect;
+  final List<String> _colors;
+  @override
+  @JsonKey(name: 'colors', defaultValue: <String>[])
+  List<String> get colors {
+    if (_colors is EqualUnmodifiableListView) return _colors;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_colors);
+  }
+
+  @override
+  @JsonKey(name: 'image_uris', defaultValue: null)
+  final ImageUrisModel? imageUris;
 
   @override
   String toString() {
-    return 'CardModel(id: $id, name: $name, releaseDate: $releaseDate)';
+    return 'CardModel(id: $id, name: $name, releaseDate: $releaseDate, type: $type, effect: $effect, colors: $colors, imageUris: $imageUris)';
   }
 
   @override
@@ -159,12 +257,18 @@ class _$CardModelImpl implements _CardModel {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.releaseDate, releaseDate) ||
-                other.releaseDate == releaseDate));
+                other.releaseDate == releaseDate) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.effect, effect) || other.effect == effect) &&
+            const DeepCollectionEquality().equals(other._colors, _colors) &&
+            (identical(other.imageUris, imageUris) ||
+                other.imageUris == imageUris));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, releaseDate);
+  int get hashCode => Object.hash(runtimeType, id, name, releaseDate, type,
+      effect, const DeepCollectionEquality().hash(_colors), imageUris);
 
   @JsonKey(ignore: true)
   @override
@@ -185,7 +289,14 @@ abstract class _CardModel implements CardModel {
       {@JsonKey(name: 'id', defaultValue: '') required final String id,
       @JsonKey(name: 'name', defaultValue: '') required final String name,
       @JsonKey(name: 'released_at', defaultValue: '')
-      required final String releaseDate}) = _$CardModelImpl;
+      required final String releaseDate,
+      @JsonKey(name: 'type_line', defaultValue: '') required final String type,
+      @JsonKey(name: 'oracle_text', defaultValue: '')
+      required final String effect,
+      @JsonKey(name: 'colors', defaultValue: <String>[])
+      required final List<String> colors,
+      @JsonKey(name: 'image_uris', defaultValue: null)
+      final ImageUrisModel? imageUris}) = _$CardModelImpl;
 
   factory _CardModel.fromJson(Map<String, dynamic> json) =
       _$CardModelImpl.fromJson;
@@ -199,6 +310,18 @@ abstract class _CardModel implements CardModel {
   @override
   @JsonKey(name: 'released_at', defaultValue: '')
   String get releaseDate;
+  @override
+  @JsonKey(name: 'type_line', defaultValue: '')
+  String get type;
+  @override
+  @JsonKey(name: 'oracle_text', defaultValue: '')
+  String get effect;
+  @override
+  @JsonKey(name: 'colors', defaultValue: <String>[])
+  List<String> get colors;
+  @override
+  @JsonKey(name: 'image_uris', defaultValue: null)
+  ImageUrisModel? get imageUris;
   @override
   @JsonKey(ignore: true)
   _$$CardModelImplCopyWith<_$CardModelImpl> get copyWith =>

@@ -27,8 +27,8 @@ extension NavbarItemX on NavbarItem {
       };
 
   String label(BuildContext context) => switch (this) {
-        NavbarItem.search => context.translate().bottomNavBarSearch,
-        NavbarItem.favorites => context.translate().bottomNavBarFavorites,
-        NavbarItem.settings => context.translate().bottomNavBarSettings,
+        NavbarItem.search => context.translate().bottom_nav_bar_search,
+        NavbarItem.favorites => context.translate().bottom_nav_bar_favorites,
+        NavbarItem.settings => context.translate().bottom_nav_bar_settings,
       };
 }

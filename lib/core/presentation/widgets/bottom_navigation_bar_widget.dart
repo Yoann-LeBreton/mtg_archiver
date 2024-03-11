@@ -11,6 +11,7 @@ class BottomNavigationBarWidget extends ConsumerWidget {
     final NavigationState navIndex = ref.watch(navigationProvider);
 
     return BottomNavigationBar(
+      elevation: 8,
       currentIndex: navIndex.index,
       items: NavbarItem.values
           .map(
