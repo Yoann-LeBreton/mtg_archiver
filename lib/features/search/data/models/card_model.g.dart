@@ -11,6 +11,15 @@ _$CardModelImpl _$$CardModelImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String? ?? '',
       name: json['name'] as String? ?? '',
       releaseDate: json['released_at'] as String? ?? '',
+      type: json['type_line'] as String? ?? '',
+      effect: json['oracle_text'] as String? ?? '',
+      colors: (json['colors'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+      imageUris: json['image_uris'] == null
+          ? null
+          : ImageUrisModel.fromJson(json['image_uris']),
     );
 
 Map<String, dynamic> _$$CardModelImplToJson(_$CardModelImpl instance) =>
@@ -18,4 +27,8 @@ Map<String, dynamic> _$$CardModelImplToJson(_$CardModelImpl instance) =>
       'id': instance.id,
       'name': instance.name,
       'released_at': instance.releaseDate,
+      'type_line': instance.type,
+      'oracle_text': instance.effect,
+      'colors': instance.colors,
+      'image_uris': instance.imageUris,
     };

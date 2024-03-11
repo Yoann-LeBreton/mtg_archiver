@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mtg_archiver/core/domain/entities/result.dart';
 import 'package:mtg_archiver/features/search/data/datasources/mtg_remote_data_source.dart';
 import 'package:mtg_archiver/features/search/data/repositories/mtg_repository_impl.dart';
 import 'package:mtg_archiver/features/search/domain/entities/search_cards_result_entity.dart';
@@ -13,5 +14,12 @@ MtgRepository mtgRepository(MtgRepositoryRef ref) => MtgRepositoryImpl(
 
 @immutable
 abstract interface class MtgRepository {
-  Future<SearchCardsResultEntity> searchByName({required String name});
+  Future<Result<SearchCardsResultEntity>> searchByName({
+    required String searchText,
+    required int numPage,
+    bool? includeMultiLingual,
+    bool? showOtherType,
+    String? order,
+    String? sortDirection,
+  });
 }
