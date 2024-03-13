@@ -1,3 +1,4 @@
+import 'package:mtg_archiver/core/enums/mana_color_enum.dart';
 import 'package:mtg_archiver/features/search/domain/entities/image_uris_entity.dart';
 
 class CardEntity {
@@ -16,6 +17,6 @@ class CardEntity {
   String releaseDate;
   String type;
   String effect;
-  List<String> colors;
+  List<ManaColor> colors;
   ImageUrisEntity? imageUris;
 }

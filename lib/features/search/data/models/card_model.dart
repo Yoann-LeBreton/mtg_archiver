@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:mtg_archiver/core/enums/mana_color_enum.dart';
 import 'package:mtg_archiver/features/search/data/models/image_uris_model.dart';
 import 'package:mtg_archiver/features/search/domain/entities/card_entity.dart';
 
@@ -28,7 +29,12 @@ extension CardModelX on CardModel {
         releaseDate: releaseDate,
         type: type,
         effect: effect,
-        colors: colors,
+        colors: colors
+            .map(
+              (String color) => ManaColor.values
+                  .firstWhere((ManaColor mana) => mana.apiValue == color),
+            )
+            .toList(),
         imageUris: imageUris?.toDomain(),
       );
 }

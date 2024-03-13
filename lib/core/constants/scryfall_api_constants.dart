@@ -6,4 +6,11 @@ class ScryfallApiConstants {
   static const String searchSortAscending = 'asc';
   static const String searchSortDescending = 'desc';
   static const String searchSortAuto = 'auto';
+
+  static const String manaGreen = 'G';
+  static const String manaBlue = 'U';
+  static const String manaWhite = 'W';
+  static const String manaRed = 'R';
+  static const String manaBlack = 'B';
+  static const String manaColorless = 'C';
 }
