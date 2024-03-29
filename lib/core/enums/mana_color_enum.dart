@@ -18,12 +18,30 @@ enum ManaColor {
 }
 
 extension ManaColorx on ManaColor {
-  SvgPicture getPicture() => switch (this) {
-        ManaColor.white => SvgPicture.asset(ManasSvg.white),
-        ManaColor.blue => SvgPicture.asset(ManasSvg.blue),
-        ManaColor.red => SvgPicture.asset(ManasSvg.red),
-        ManaColor.green => SvgPicture.asset(ManasSvg.green),
-        ManaColor.black => SvgPicture.asset(ManasSvg.black),
-        ManaColor.colorless => SvgPicture.asset(ManasSvg.colorless),
+  SvgPicture getPicture(double height) => switch (this) {
+        ManaColor.white => SvgPicture.asset(
+            ManasSvg.white,
+            height: height,
+          ),
+        ManaColor.blue => SvgPicture.asset(
+            ManasSvg.blue,
+            height: height,
+          ),
+        ManaColor.red => SvgPicture.asset(
+            ManasSvg.red,
+            height: height,
+          ),
+        ManaColor.green => SvgPicture.asset(
+            ManasSvg.green,
+            height: height,
+          ),
+        ManaColor.black => SvgPicture.asset(
+            ManasSvg.black,
+            height: height,
+          ),
+        ManaColor.colorless => SvgPicture.asset(
+            ManasSvg.colorless,
+            height: height,
+          ),
       };
 }

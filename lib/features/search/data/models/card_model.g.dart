@@ -17,6 +17,7 @@ _$CardModelImpl _$$CardModelImplFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String)
               .toList() ??
           [],
+      manaCost: json['mana_cost'] as String? ?? '',
       imageUris: json['image_uris'] == null
           ? null
           : ImageUrisModel.fromJson(json['image_uris']),
@@ -30,5 +31,6 @@ Map<String, dynamic> _$$CardModelImplToJson(_$CardModelImpl instance) =>
       'type_line': instance.type,
       'oracle_text': instance.effect,
       'colors': instance.colors,
+      'mana_cost': instance.manaCost,
       'image_uris': instance.imageUris,
     };
