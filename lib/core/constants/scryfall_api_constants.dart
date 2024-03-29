@@ -13,4 +13,5 @@ class ScryfallApiConstants {
   static const String manaRed = 'R';
   static const String manaBlack = 'B';
   static const String manaColorless = 'C';
+  static const String manRedGreen = 'R/G';
 }

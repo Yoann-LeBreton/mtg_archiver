@@ -10,7 +10,12 @@ enum ManaColor {
   red(ScryfallApiConstants.manaRed, AppColors.manaRed),
   green(ScryfallApiConstants.manaGreen, AppColors.manaGreen),
   black(ScryfallApiConstants.manaBlack, AppColors.manaBlack),
-  colorless(ScryfallApiConstants.manaColorless, AppColors.manaColorless);
+  colorless(ScryfallApiConstants.manaColorless, AppColors.manaColorless),
+  colorRedGreen(
+    ScryfallApiConstants.manRedGreen,
+    AppColors.manaColorless,
+  );
+  //TODO : implement dual colors
 
   const ManaColor(this.apiValue, this.color);
   final String apiValue;
@@ -41,6 +46,10 @@ extension ManaColorx on ManaColor {
           ),
         ManaColor.colorless => SvgPicture.asset(
             ManasSvg.colorless,
+            height: height,
+          ),
+        ManaColor.colorRedGreen => SvgPicture.asset(
+            ManasSvg.redGreen,
             height: height,
           ),
       };
