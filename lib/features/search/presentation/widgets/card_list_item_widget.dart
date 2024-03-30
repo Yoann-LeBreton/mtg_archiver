@@ -11,6 +11,7 @@ import 'package:mtg_archiver/features/search/domain/entities/card_entity.dart';
 
 class CardListItemWidget extends StatelessWidget {
   const CardListItemWidget({required this.card, super.key});
+
   final CardEntity card;
 
   @override
@@ -49,7 +50,8 @@ class CardListItemWidget extends StatelessWidget {
   }
 
   List<Color> getColors() {
-    final List<Color> list = card.colors.map((ManaColor e) => e.color).toList();
+    final List<Color> list =
+        card.colors.map((ManaColor e) => e.color).whereType<Color>().toList();
     if (list.isNotEmpty && list.length == 1) {
       list.add(list.first);
     }
@@ -73,61 +75,58 @@ class CardListItemWidget extends StatelessWidget {
             : null,
         border: Border.all(color: Colors.blueGrey, width: 4),
       ),
-      child: Expanded(
-        child: Container(
-          color: AppColors.white,
-          padding: EdgeInsets.all(Spacing.base.value),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                card.name,
-                textAlign: TextAlign.center,
-                style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+      child: Container(
+        color: AppColors.white,
+        padding: EdgeInsets.all(Spacing.base.value),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              card.name,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+            Text(
+              card.type,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 12,
               ),
-              Text(
-                card.type,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 12,
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  if (card.manaCost.colorless > 0)
-                    Stack(
-                      alignment: Alignment.center,
-                      children: <Widget>[
-                        SvgPicture.asset(
-                          ManasSvg.colorlessEmpty,
-                          height: 25,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                if (card.manaCost.colorless > 0)
+                  Stack(
+                    alignment: Alignment.center,
+                    children: <Widget>[
+                      SvgPicture.asset(
+                        ManasSvg.colorlessEmpty,
+                        height: 25,
+                      ),
+                      Text(
+                        card.manaCost.colorless.toString(),
+                        style: const TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
                         ),
-                        Text(
-                          card.manaCost.colorless.toString(),
-                          style: const TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ...card.manaCost.colors
-                      .map((ManaColor color) => color.getPicture(25)),
-                ],
-              ),
-              AppGap.mediumHeight(),
-              IconTouchableWidget(
-                icon: Icons.info,
-                horizontalPadding: 16,
-                verticalPadding: 8,
-                onTap: () {
-                  print('press for details');
-                },
-              ),
-            ],
-          ),
+                      ),
+                    ],
+                  ),
+                ...card.manaCost.colors
+                    .map((ManaColor color) => color.getPicture(25)),
+              ],
+            ),
+            AppGap.mediumHeight(),
+            IconTouchableWidget(
+              icon: Icons.info,
+              horizontalPadding: 16,
+              verticalPadding: 8,
+              onTap: () {
+                print('press for details');
+              },
+            ),
+          ],
         ),
       ),
     );

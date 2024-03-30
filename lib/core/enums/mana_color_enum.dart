@@ -11,46 +11,76 @@ enum ManaColor {
   green(ScryfallApiConstants.manaGreen, AppColors.manaGreen),
   black(ScryfallApiConstants.manaBlack, AppColors.manaBlack),
   colorless(ScryfallApiConstants.manaColorless, AppColors.manaColorless),
+  colorWhiteBlue(
+    ScryfallApiConstants.manaWhiteBlue,
+    null,
+  ),
+  colorWhiteBlack(
+    ScryfallApiConstants.manaWhiteBlack,
+    null,
+  ),
+  colorBlackRed(
+    ScryfallApiConstants.manaBlackRed,
+    null,
+  ),
+  colorBlackGreen(
+    ScryfallApiConstants.manaBlackGreen,
+    null,
+  ),
+  colorBlueBlack(
+    ScryfallApiConstants.manaBlueBlack,
+    null,
+  ),
+  colorBlueRed(
+    ScryfallApiConstants.manaBlueRed,
+    null,
+  ),
   colorRedGreen(
-    ScryfallApiConstants.manRedGreen,
-    AppColors.manaColorless,
+    ScryfallApiConstants.manaRedGreen,
+    null,
+  ),
+  colorRedWhite(
+    ScryfallApiConstants.manaRedWhite,
+    null,
+  ),
+  colorGreenWhite(
+    ScryfallApiConstants.manaGreenWhite,
+    null,
+  ),
+  colorGreenBlue(
+    ScryfallApiConstants.manaGreenBlue,
+    null,
   );
-  //TODO : implement dual colors
 
   const ManaColor(this.apiValue, this.color);
+
   final String apiValue;
-  final Color color;
+  final Color? color;
 }
 
 extension ManaColorx on ManaColor {
-  SvgPicture getPicture(double height) => switch (this) {
-        ManaColor.white => SvgPicture.asset(
-            ManasSvg.white,
-            height: height,
-          ),
-        ManaColor.blue => SvgPicture.asset(
-            ManasSvg.blue,
-            height: height,
-          ),
-        ManaColor.red => SvgPicture.asset(
-            ManasSvg.red,
-            height: height,
-          ),
-        ManaColor.green => SvgPicture.asset(
-            ManasSvg.green,
-            height: height,
-          ),
-        ManaColor.black => SvgPicture.asset(
-            ManasSvg.black,
-            height: height,
-          ),
-        ManaColor.colorless => SvgPicture.asset(
-            ManasSvg.colorless,
-            height: height,
-          ),
-        ManaColor.colorRedGreen => SvgPicture.asset(
-            ManasSvg.redGreen,
-            height: height,
-          ),
-      };
+  SvgPicture getPicture(double height) {
+    final String svgPath = switch (this) {
+      ManaColor.white => ManasSvg.white,
+      ManaColor.blue => ManasSvg.blue,
+      ManaColor.red => ManasSvg.red,
+      ManaColor.green => ManasSvg.green,
+      ManaColor.black => ManasSvg.black,
+      ManaColor.colorless => ManasSvg.colorless,
+      ManaColor.colorWhiteBlue => ManasSvg.whiteBlue,
+      ManaColor.colorWhiteBlack => ManasSvg.whiteBlack,
+      ManaColor.colorBlackRed => ManasSvg.blackRed,
+      ManaColor.colorBlackGreen => ManasSvg.blackGreen,
+      ManaColor.colorBlueBlack => ManasSvg.blueblack,
+      ManaColor.colorBlueRed => ManasSvg.blueRed,
+      ManaColor.colorRedGreen => ManasSvg.redGreen,
+      ManaColor.colorRedWhite => ManasSvg.redWhite,
+      ManaColor.colorGreenWhite => ManasSvg.greenWhite,
+      ManaColor.colorGreenBlue => ManasSvg.greenBlue,
+    };
+    return SvgPicture.asset(
+      svgPath,
+      height: height,
+    );
+  }
 }
