@@ -32,6 +32,8 @@ mixin _$CardModel {
   String get effect => throw _privateConstructorUsedError;
   @JsonKey(name: 'colors', defaultValue: <String>[])
   List<String> get colors => throw _privateConstructorUsedError;
+  @JsonKey(name: 'mana_cost', defaultValue: '')
+  String get manaCost => throw _privateConstructorUsedError;
   @JsonKey(name: 'image_uris', defaultValue: null)
   ImageUrisModel? get imageUris => throw _privateConstructorUsedError;
 
@@ -53,6 +55,7 @@ abstract class $CardModelCopyWith<$Res> {
       @JsonKey(name: 'type_line', defaultValue: '') String type,
       @JsonKey(name: 'oracle_text', defaultValue: '') String effect,
       @JsonKey(name: 'colors', defaultValue: <String>[]) List<String> colors,
+      @JsonKey(name: 'mana_cost', defaultValue: '') String manaCost,
       @JsonKey(name: 'image_uris', defaultValue: null)
       ImageUrisModel? imageUris});
 
@@ -78,6 +81,7 @@ class _$CardModelCopyWithImpl<$Res, $Val extends CardModel>
     Object? type = null,
     Object? effect = null,
     Object? colors = null,
+    Object? manaCost = null,
     Object? imageUris = freezed,
   }) {
     return _then(_value.copyWith(
@@ -105,6 +109,10 @@ class _$CardModelCopyWithImpl<$Res, $Val extends CardModel>
           ? _value.colors
           : colors // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      manaCost: null == manaCost
+          ? _value.manaCost
+          : manaCost // ignore: cast_nullable_to_non_nullable
+              as String,
       imageUris: freezed == imageUris
           ? _value.imageUris
           : imageUris // ignore: cast_nullable_to_non_nullable
@@ -140,6 +148,7 @@ abstract class _$$CardModelImplCopyWith<$Res>
       @JsonKey(name: 'type_line', defaultValue: '') String type,
       @JsonKey(name: 'oracle_text', defaultValue: '') String effect,
       @JsonKey(name: 'colors', defaultValue: <String>[]) List<String> colors,
+      @JsonKey(name: 'mana_cost', defaultValue: '') String manaCost,
       @JsonKey(name: 'image_uris', defaultValue: null)
       ImageUrisModel? imageUris});
 
@@ -164,6 +173,7 @@ class __$$CardModelImplCopyWithImpl<$Res>
     Object? type = null,
     Object? effect = null,
     Object? colors = null,
+    Object? manaCost = null,
     Object? imageUris = freezed,
   }) {
     return _then(_$CardModelImpl(
@@ -191,6 +201,10 @@ class __$$CardModelImplCopyWithImpl<$Res>
           ? _value._colors
           : colors // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      manaCost: null == manaCost
+          ? _value.manaCost
+          : manaCost // ignore: cast_nullable_to_non_nullable
+              as String,
       imageUris: freezed == imageUris
           ? _value.imageUris
           : imageUris // ignore: cast_nullable_to_non_nullable
@@ -210,6 +224,7 @@ class _$CardModelImpl implements _CardModel {
       @JsonKey(name: 'oracle_text', defaultValue: '') required this.effect,
       @JsonKey(name: 'colors', defaultValue: <String>[])
       required final List<String> colors,
+      @JsonKey(name: 'mana_cost', defaultValue: '') required this.manaCost,
       @JsonKey(name: 'image_uris', defaultValue: null) this.imageUris})
       : _colors = colors;
 
@@ -241,12 +256,15 @@ class _$CardModelImpl implements _CardModel {
   }
 
   @override
+  @JsonKey(name: 'mana_cost', defaultValue: '')
+  final String manaCost;
+  @override
   @JsonKey(name: 'image_uris', defaultValue: null)
   final ImageUrisModel? imageUris;
 
   @override
   String toString() {
-    return 'CardModel(id: $id, name: $name, releaseDate: $releaseDate, type: $type, effect: $effect, colors: $colors, imageUris: $imageUris)';
+    return 'CardModel(id: $id, name: $name, releaseDate: $releaseDate, type: $type, effect: $effect, colors: $colors, manaCost: $manaCost, imageUris: $imageUris)';
   }
 
   @override
@@ -261,14 +279,24 @@ class _$CardModelImpl implements _CardModel {
             (identical(other.type, type) || other.type == type) &&
             (identical(other.effect, effect) || other.effect == effect) &&
             const DeepCollectionEquality().equals(other._colors, _colors) &&
+            (identical(other.manaCost, manaCost) ||
+                other.manaCost == manaCost) &&
             (identical(other.imageUris, imageUris) ||
                 other.imageUris == imageUris));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, releaseDate, type,
-      effect, const DeepCollectionEquality().hash(_colors), imageUris);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      releaseDate,
+      type,
+      effect,
+      const DeepCollectionEquality().hash(_colors),
+      manaCost,
+      imageUris);
 
   @JsonKey(ignore: true)
   @override
@@ -295,6 +323,8 @@ abstract class _CardModel implements CardModel {
       required final String effect,
       @JsonKey(name: 'colors', defaultValue: <String>[])
       required final List<String> colors,
+      @JsonKey(name: 'mana_cost', defaultValue: '')
+      required final String manaCost,
       @JsonKey(name: 'image_uris', defaultValue: null)
       final ImageUrisModel? imageUris}) = _$CardModelImpl;
 
@@ -319,6 +349,9 @@ abstract class _CardModel implements CardModel {
   @override
   @JsonKey(name: 'colors', defaultValue: <String>[])
   List<String> get colors;
+  @override
+  @JsonKey(name: 'mana_cost', defaultValue: '')
+  String get manaCost;
   @override
   @JsonKey(name: 'image_uris', defaultValue: null)
   ImageUrisModel? get imageUris;

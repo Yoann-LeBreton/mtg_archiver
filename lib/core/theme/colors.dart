@@ -62,4 +62,11 @@ class AppColors {
   static const Color shadowOpacityColor = Color.fromRGBO(0, 0, 0, 0.1);
   static const Color mystic = Color(0xFFE5EFEE);
   static const Color modalBarrierColor = Color.fromRGBO(0, 0, 0, 0.15);
+
+  static const Color manaBlack = Color(0xFFbab1ab);
+  static const Color manaBlue = Color(0xFFC1D7E9);
+  static const Color manaRed = Color(0xFFE49977);
+  static const Color manaGreen = Color(0xFFA3C095);
+  static const Color manaWhite = Color(0xFFF8F6D8);
+  static const Color manaColorless = Color(0xFFCAC5C0);
 }

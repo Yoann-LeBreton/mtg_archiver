@@ -1,4 +1,7 @@
+import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:mtg_archiver/core/enums/mana_color_enum.dart';
+import 'package:mtg_archiver/core/extensions/string_extensions.dart';
 import 'package:mtg_archiver/features/search/data/models/image_uris_model.dart';
 import 'package:mtg_archiver/features/search/domain/entities/card_entity.dart';
 
@@ -15,6 +18,7 @@ class CardModel with _$CardModel {
     @JsonKey(name: 'oracle_text', defaultValue: '') required String effect,
     @JsonKey(name: 'colors', defaultValue: <String>[])
     required List<String> colors,
+    @JsonKey(name: 'mana_cost', defaultValue: '') required String manaCost,
     @JsonKey(name: 'image_uris', defaultValue: null) ImageUrisModel? imageUris,
   }) = _CardModel;
 
@@ -28,7 +32,14 @@ extension CardModelX on CardModel {
         releaseDate: releaseDate,
         type: type,
         effect: effect,
-        colors: colors,
+        colors: colors
+            .map(
+              (String color) => ManaColor.values
+                  .firstWhereOrNull((ManaColor mana) => mana.apiValue == color),
+            )
+            .whereType<ManaColor>()
+            .toList(),
+        manaCost: manaCost.convertToManas(),
         imageUris: imageUris?.toDomain(),
       );
 }
