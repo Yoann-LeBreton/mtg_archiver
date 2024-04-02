@@ -11,7 +11,7 @@ part 'search_mtg_cards_notifier.g.dart';
 class SearchMtgCardsNotif extends _$SearchMtgCardsNotif {
   @override
   SearchMtgState build() {
-    mtgRepository = ref.read(mtgRepositoryProvider);
+    mtgRepository = ref.watch(mtgRepositoryProvider);
     return const SearchMtgState.initial(numPage: 0);
   }
 
@@ -70,7 +70,6 @@ class SearchMtgCardsNotif extends _$SearchMtgCardsNotif {
           order: order,
           sortDirection: sortDirection,
         );
-        await Future.delayed(Duration(seconds: 1));
         state = result.when(
           success: (SearchCardsResultEntity searchResult) =>
               SearchMtgState.success(
