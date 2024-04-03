@@ -7,9 +7,9 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'mtg_repository.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 MtgRepository mtgRepository(MtgRepositoryRef ref) => MtgRepositoryImpl(
-      mtgRemoteDataSource: ref.read(mtgRemoteDataSourceProvider),
+      mtgRemoteDataSource: ref.watch(mtgRemoteDataSourceProvider),
     );
 
 @immutable

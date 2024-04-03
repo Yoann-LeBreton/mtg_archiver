@@ -7,7 +7,7 @@ part of 'search_mtg_cards_notifier.dart';
 // **************************************************************************
 
 String _$searchMtgCardsNotifHash() =>
-    r'35a7b747b973df7569ec122ea599c09e0a863358';
+    r'd55ac7f91d09c308eb0cc50d3aae364ba111c6d9';
 
 /// See also [SearchMtgCardsNotif].
 @ProviderFor(SearchMtgCardsNotif)
