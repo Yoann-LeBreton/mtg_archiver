@@ -7,12 +7,12 @@ part of 'search_mtg_cards_notifier.dart';
 // **************************************************************************
 
 String _$searchMtgCardsNotifHash() =>
-    r'35a7b747b973df7569ec122ea599c09e0a863358';
+    r'9066732cf8ffc05fa02a08871fbe6f05accf6763';
 
 /// See also [SearchMtgCardsNotif].
 @ProviderFor(SearchMtgCardsNotif)
 final searchMtgCardsNotifProvider =
-    AutoDisposeNotifierProvider<SearchMtgCardsNotif, SearchMtgState>.internal(
+    NotifierProvider<SearchMtgCardsNotif, SearchMtgState>.internal(
   SearchMtgCardsNotif.new,
   name: r'searchMtgCardsNotifProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -22,6 +22,6 @@ final searchMtgCardsNotifProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$SearchMtgCardsNotif = AutoDisposeNotifier<SearchMtgState>;
+typedef _$SearchMtgCardsNotif = Notifier<SearchMtgState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

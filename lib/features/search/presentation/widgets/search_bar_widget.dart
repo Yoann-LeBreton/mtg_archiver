@@ -9,34 +9,41 @@ class SearchBarWidget extends StatefulWidget {
     required this.onSubmit,
     required this.onFilterClick,
     required this.searchLabel,
+    required this.initialValue,
     super.key,
   });
 
   final Function(String)? onSubmit;
   final VoidCallback onFilterClick;
   final String searchLabel;
+  final String initialValue;
 
   @override
   State<StatefulWidget> createState() => _SearchBarWidgetState();
 }
 
 class _SearchBarWidgetState extends State<SearchBarWidget> {
-  final TextEditingController _controller = TextEditingController();
+  final TextEditingController _textController = TextEditingController();
+  late FocusNode _focusNode;
   bool _emptyText = true;
 
   @override
   void initState() {
     super.initState();
-    _controller.addListener(() {
-      setState(() {
-        _emptyText = _controller.text.isEmpty;
+    _focusNode = FocusNode();
+    _textController
+      ..text = widget.initialValue
+      ..addListener(() {
+        setState(() {
+          _emptyText = _textController.text.isEmpty;
+        });
       });
-    });
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _textController.dispose();
+    _focusNode.dispose();
     super.dispose();
   }
 
@@ -47,32 +54,41 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
       child: Row(
         children: <Widget>[
           Expanded(
-            child: TextField(
-              controller: _controller,
-              onSubmitted: widget.onSubmit,
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                labelText: widget.searchLabel,
-                labelStyle: const TextStyle(fontSize: 20),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: AppRadius.radius24,
-                  borderSide:
-                      const BorderSide(color: AppColors.blackLight, width: 1),
+            child: Focus(
+              focusNode: _focusNode,
+              onFocusChange: (bool hasFocus) => hasFocus
+                  ? _textController.selection = TextSelection(
+                      baseOffset: 0,
+                      extentOffset: _textController.text.length,
+                    )
+                  : null,
+              child: TextField(
+                controller: _textController,
+                onSubmitted: widget.onSubmit,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  labelText: widget.searchLabel,
+                  labelStyle: const TextStyle(fontSize: 20),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: AppRadius.radius24,
+                    borderSide:
+                        const BorderSide(color: AppColors.blackLight, width: 1),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: AppRadius.radius24,
+                    borderSide: BorderSide.none,
+                  ),
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: Spacing.regular.value),
+                  filled: true,
+                  prefixIcon: const Icon(Icons.search),
+                  suffixIcon: _emptyText
+                      ? null
+                      : IconButton(
+                          onPressed: _textController.clear,
+                          icon: const Icon(Icons.close),
+                        ),
                 ),
-                border: OutlineInputBorder(
-                  borderRadius: AppRadius.radius24,
-                  borderSide: BorderSide.none,
-                ),
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: Spacing.regular.value),
-                filled: true,
-                prefixIcon: const Icon(Icons.search),
-                suffixIcon: _emptyText
-                    ? null
-                    : IconButton(
-                        onPressed: _controller.clear,
-                        icon: const Icon(Icons.close),
-                      ),
               ),
             ),
           ),
