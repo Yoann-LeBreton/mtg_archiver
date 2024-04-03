@@ -9,7 +9,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'search_mtg_cards_notifier.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class SearchMtgCardsNotif extends _$SearchMtgCardsNotif {
   @override
   SearchMtgState build() {
