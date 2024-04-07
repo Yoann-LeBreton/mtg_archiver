@@ -34,6 +34,8 @@ mixin _$CardModel {
   List<String> get colors => throw _privateConstructorUsedError;
   @JsonKey(name: 'mana_cost', defaultValue: '')
   String get manaCost => throw _privateConstructorUsedError;
+  @JsonKey(name: 'legalities', defaultValue: null)
+  LegalitiesModel? get legalities => throw _privateConstructorUsedError;
   @JsonKey(name: 'image_uris', defaultValue: null)
   ImageUrisModel? get imageUris => throw _privateConstructorUsedError;
 
@@ -56,9 +58,12 @@ abstract class $CardModelCopyWith<$Res> {
       @JsonKey(name: 'oracle_text', defaultValue: '') String effect,
       @JsonKey(name: 'colors', defaultValue: <String>[]) List<String> colors,
       @JsonKey(name: 'mana_cost', defaultValue: '') String manaCost,
+      @JsonKey(name: 'legalities', defaultValue: null)
+      LegalitiesModel? legalities,
       @JsonKey(name: 'image_uris', defaultValue: null)
       ImageUrisModel? imageUris});
 
+  $LegalitiesModelCopyWith<$Res>? get legalities;
   $ImageUrisModelCopyWith<$Res>? get imageUris;
 }
 
@@ -82,6 +87,7 @@ class _$CardModelCopyWithImpl<$Res, $Val extends CardModel>
     Object? effect = null,
     Object? colors = null,
     Object? manaCost = null,
+    Object? legalities = freezed,
     Object? imageUris = freezed,
   }) {
     return _then(_value.copyWith(
@@ -113,11 +119,27 @@ class _$CardModelCopyWithImpl<$Res, $Val extends CardModel>
           ? _value.manaCost
           : manaCost // ignore: cast_nullable_to_non_nullable
               as String,
+      legalities: freezed == legalities
+          ? _value.legalities
+          : legalities // ignore: cast_nullable_to_non_nullable
+              as LegalitiesModel?,
       imageUris: freezed == imageUris
           ? _value.imageUris
           : imageUris // ignore: cast_nullable_to_non_nullable
               as ImageUrisModel?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LegalitiesModelCopyWith<$Res>? get legalities {
+    if (_value.legalities == null) {
+      return null;
+    }
+
+    return $LegalitiesModelCopyWith<$Res>(_value.legalities!, (value) {
+      return _then(_value.copyWith(legalities: value) as $Val);
+    });
   }
 
   @override
@@ -149,9 +171,13 @@ abstract class _$$CardModelImplCopyWith<$Res>
       @JsonKey(name: 'oracle_text', defaultValue: '') String effect,
       @JsonKey(name: 'colors', defaultValue: <String>[]) List<String> colors,
       @JsonKey(name: 'mana_cost', defaultValue: '') String manaCost,
+      @JsonKey(name: 'legalities', defaultValue: null)
+      LegalitiesModel? legalities,
       @JsonKey(name: 'image_uris', defaultValue: null)
       ImageUrisModel? imageUris});
 
+  @override
+  $LegalitiesModelCopyWith<$Res>? get legalities;
   @override
   $ImageUrisModelCopyWith<$Res>? get imageUris;
 }
@@ -174,6 +200,7 @@ class __$$CardModelImplCopyWithImpl<$Res>
     Object? effect = null,
     Object? colors = null,
     Object? manaCost = null,
+    Object? legalities = freezed,
     Object? imageUris = freezed,
   }) {
     return _then(_$CardModelImpl(
@@ -205,6 +232,10 @@ class __$$CardModelImplCopyWithImpl<$Res>
           ? _value.manaCost
           : manaCost // ignore: cast_nullable_to_non_nullable
               as String,
+      legalities: freezed == legalities
+          ? _value.legalities
+          : legalities // ignore: cast_nullable_to_non_nullable
+              as LegalitiesModel?,
       imageUris: freezed == imageUris
           ? _value.imageUris
           : imageUris // ignore: cast_nullable_to_non_nullable
@@ -225,6 +256,7 @@ class _$CardModelImpl implements _CardModel {
       @JsonKey(name: 'colors', defaultValue: <String>[])
       required final List<String> colors,
       @JsonKey(name: 'mana_cost', defaultValue: '') required this.manaCost,
+      @JsonKey(name: 'legalities', defaultValue: null) this.legalities,
       @JsonKey(name: 'image_uris', defaultValue: null) this.imageUris})
       : _colors = colors;
 
@@ -259,12 +291,15 @@ class _$CardModelImpl implements _CardModel {
   @JsonKey(name: 'mana_cost', defaultValue: '')
   final String manaCost;
   @override
+  @JsonKey(name: 'legalities', defaultValue: null)
+  final LegalitiesModel? legalities;
+  @override
   @JsonKey(name: 'image_uris', defaultValue: null)
   final ImageUrisModel? imageUris;
 
   @override
   String toString() {
-    return 'CardModel(id: $id, name: $name, releaseDate: $releaseDate, type: $type, effect: $effect, colors: $colors, manaCost: $manaCost, imageUris: $imageUris)';
+    return 'CardModel(id: $id, name: $name, releaseDate: $releaseDate, type: $type, effect: $effect, colors: $colors, manaCost: $manaCost, legalities: $legalities, imageUris: $imageUris)';
   }
 
   @override
@@ -281,6 +316,8 @@ class _$CardModelImpl implements _CardModel {
             const DeepCollectionEquality().equals(other._colors, _colors) &&
             (identical(other.manaCost, manaCost) ||
                 other.manaCost == manaCost) &&
+            (identical(other.legalities, legalities) ||
+                other.legalities == legalities) &&
             (identical(other.imageUris, imageUris) ||
                 other.imageUris == imageUris));
   }
@@ -296,6 +333,7 @@ class _$CardModelImpl implements _CardModel {
       effect,
       const DeepCollectionEquality().hash(_colors),
       manaCost,
+      legalities,
       imageUris);
 
   @JsonKey(ignore: true)
@@ -325,6 +363,8 @@ abstract class _CardModel implements CardModel {
       required final List<String> colors,
       @JsonKey(name: 'mana_cost', defaultValue: '')
       required final String manaCost,
+      @JsonKey(name: 'legalities', defaultValue: null)
+      final LegalitiesModel? legalities,
       @JsonKey(name: 'image_uris', defaultValue: null)
       final ImageUrisModel? imageUris}) = _$CardModelImpl;
 
@@ -352,6 +392,9 @@ abstract class _CardModel implements CardModel {
   @override
   @JsonKey(name: 'mana_cost', defaultValue: '')
   String get manaCost;
+  @override
+  @JsonKey(name: 'legalities', defaultValue: null)
+  LegalitiesModel? get legalities;
   @override
   @JsonKey(name: 'image_uris', defaultValue: null)
   ImageUrisModel? get imageUris;
