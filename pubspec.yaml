@@ -9,6 +9,8 @@ environment:
   sdk: '>=3.3.0 <4.0.0'
 
 dependencies:
+  # https://pub.dev/packages/animations
+  animations: ^2.0.11
 
   # https://pub.dev/packages/collection
   collection: ^1.18.0

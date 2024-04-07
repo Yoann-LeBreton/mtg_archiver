@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:mtg_archiver/core/enums/legality_enum.dart';
 import 'package:mtg_archiver/core/enums/mana_color_enum.dart';
 import 'package:mtg_archiver/core/typedef/card_typedefs.dart';
 import 'package:mtg_archiver/core/util/custom_regex.dart';
@@ -38,5 +39,11 @@ extension StringExtension on String {
     } else {
       return (colors: List<ManaColor>.empty(), colorless: 0);
     }
+  }
+
+  Legality convertToLegality() {
+    return Legality.values.firstWhereOrNull(
+            (Legality legality) => legality.apiValue == this) ??
+        Legality.unknown;
   }
 }

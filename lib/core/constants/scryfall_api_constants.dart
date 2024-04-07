@@ -26,4 +26,9 @@ class ScryfallApiConstants {
   static const String manaGreenBlue = 'G/U';
 
   static const String manaInfinite = '∞';
+
+  static const String legalityLegal = 'legal';
+  static const String legalityNotLegal = 'not_legal';
+  static const String legalityRestricted = 'restricted';
+  static const String legalityBanned = 'banned';
 }
