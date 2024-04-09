@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mtg_archiver/core/extensions/context_extension.dart';
 import 'package:mtg_archiver/core/presentation/providers/navigation_provider.dart';
 import 'package:mtg_archiver/core/presentation/providers/navigation_state.dart';
 
@@ -13,6 +14,7 @@ class BottomNavigationBarWidget extends ConsumerWidget {
     return BottomNavigationBar(
       elevation: 8,
       currentIndex: navIndex.index,
+      selectedItemColor: context.tertiaryColor,
       items: NavbarItem.values
           .map(
             (NavbarItem item) => BottomNavigationBarItem(

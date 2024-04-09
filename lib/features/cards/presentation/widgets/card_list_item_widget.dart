@@ -2,8 +2,10 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mtg_archiver/core/enums/mana_color_enum.dart';
+import 'package:mtg_archiver/core/extensions/context_extension.dart';
 import 'package:mtg_archiver/core/presentation/widgets/icon_touchable_widget.dart';
 import 'package:mtg_archiver/core/resources/manas_svg.dart';
+import 'package:mtg_archiver/core/theme/app_text_styles.dart';
 import 'package:mtg_archiver/core/theme/colors.dart';
 import 'package:mtg_archiver/core/theme/radius.dart';
 import 'package:mtg_archiver/core/theme/sizes.dart';
@@ -23,7 +25,7 @@ class CardListItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Color> colors = getColors();
     return card.imageUris == null
-        ? _easyView(colors)
+        ? _easyView(colors, context)
         : FlipCard(
             direction: FlipDirection.HORIZONTAL,
             side: CardSide.FRONT,
@@ -50,7 +52,7 @@ class CardListItemWidget extends StatelessWidget {
                       );
               },
             ),
-            back: _easyView(colors),
+            back: _easyView(colors, context),
           );
   }
 
@@ -63,7 +65,7 @@ class CardListItemWidget extends StatelessWidget {
     return list;
   }
 
-  Widget _easyView(List<Color> colors) {
+  Widget _easyView(List<Color> colors, BuildContext context) {
     return Container(
       padding: EdgeInsets.all(Spacing.regular.value),
       height: 80,
@@ -81,7 +83,7 @@ class CardListItemWidget extends StatelessWidget {
         border: Border.all(color: Colors.blueGrey, width: 4),
       ),
       child: Container(
-        color: AppColors.white,
+        color: context.secondaryColor,
         padding: EdgeInsets.all(Spacing.base.value),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -89,14 +91,13 @@ class CardListItemWidget extends StatelessWidget {
             Text(
               card.name,
               textAlign: TextAlign.center,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              style: AppTextStyles.bold16.copyWith(color: context.primaryColor),
             ),
             Text(
               card.type,
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 12,
-              ),
+              style:
+                  AppTextStyles.regular12.copyWith(color: context.primaryColor),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
