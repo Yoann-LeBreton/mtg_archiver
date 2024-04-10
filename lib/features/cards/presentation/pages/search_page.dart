@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mtg_archiver/core/constants/route_list.dart';
 import 'package:mtg_archiver/core/extensions/context_extension.dart';
 import 'package:mtg_archiver/core/presentation/widgets/loading_widget.dart';
-import 'package:mtg_archiver/core/theme/colors.dart';
 import 'package:mtg_archiver/core/theme/sizes.dart';
 import 'package:mtg_archiver/features/cards/domain/entities/card_entity.dart';
 import 'package:mtg_archiver/features/cards/domain/entities/search_filter_entity.dart';
@@ -32,8 +31,8 @@ class _SearchPageState extends ConsumerState<SearchPage> {
     return Column(
       children: <Widget>[
         Material(
-          elevation: 8,
-          shadowColor: AppColors.paleBlue,
+          elevation: 3,
+          shadowColor: context.tertiaryColor,
           child: Container(
             padding: EdgeInsets.all(Spacing.regular.value),
             child: SearchBarWidget(
@@ -71,7 +70,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
             ),
           ),
         ),
-        AppGap.regularHeight(),
+        AppGap.basicHeight(),
         Expanded(
           child: searchState.when(
             error: (

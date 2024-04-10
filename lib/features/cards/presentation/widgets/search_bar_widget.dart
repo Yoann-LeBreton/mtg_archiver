@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mtg_archiver/core/theme/colors.dart';
+import 'package:mtg_archiver/core/extensions/context_extension.dart';
 import 'package:mtg_archiver/core/theme/radius.dart';
 import 'package:mtg_archiver/core/theme/sizes.dart';
 
@@ -72,11 +72,13 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: AppRadius.radius24,
                     borderSide:
-                        const BorderSide(color: AppColors.blackLight, width: 1),
+                        BorderSide(color: context.primaryColor, width: 1),
                   ),
                   border: OutlineInputBorder(
                     borderRadius: AppRadius.radius24,
-                    borderSide: BorderSide.none,
+                    borderSide: _emptyText
+                        ? BorderSide.none
+                        : BorderSide(color: context.primaryColor, width: 1),
                   ),
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: Spacing.regular.value),

@@ -10,5 +10,6 @@
   "sort_mode": "Sort mode",
   "show_multilingual": "Show multilingual",
   "show_other_types": "Show others types\n(tokens, planes, etc...)",
-  "validate": "Validate"
+  "validate": "Validate",
+  "ok": "OK"
 }

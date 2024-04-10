@@ -65,12 +65,13 @@ class _MtgCardDetailsPageState extends ConsumerState<MtgCardDetailsPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Padding(
-                            padding: EdgeInsets.all(Spacing.medium.value),
-                            child: Image.network(
-                              cardInfo.imageUris!.largest,
+                          if (cardInfo.imageUris?.largest != null)
+                            Padding(
+                              padding: EdgeInsets.all(Spacing.medium.value),
+                              child: Image.network(
+                                cardInfo.imageUris!.largest,
+                              ),
                             ),
-                          ),
                           Text(
                             cardInfo.type,
                             textAlign: TextAlign.center,

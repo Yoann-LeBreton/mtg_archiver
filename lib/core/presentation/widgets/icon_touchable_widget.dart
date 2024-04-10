@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mtg_archiver/core/extensions/context_extension.dart';
 
 class IconTouchableWidget extends StatelessWidget {
   const IconTouchableWidget({
@@ -23,7 +24,10 @@ class IconTouchableWidget extends StatelessWidget {
           vertical: verticalPadding,
           horizontal: horizontalPadding,
         ),
-        child: Icon(icon),
+        child: Icon(
+          icon,
+          color: context.primaryColor,
+        ),
       ),
     );
   }

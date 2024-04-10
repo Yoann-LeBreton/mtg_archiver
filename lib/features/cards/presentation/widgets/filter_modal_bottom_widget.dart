@@ -17,6 +17,7 @@ class FilterModalBottomWidget {
         .map((SortType type) => type == filter.sortType)
         .toList();
     return showModalBottomSheet(
+      backgroundColor: context.secondaryColor,
       context: context,
       elevation: 8,
       showDragHandle: true,
