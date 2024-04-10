@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mtg_archiver/core/extensions/context_extension.dart';
 import 'package:mtg_archiver/core/presentation/providers/navigation_provider.dart';
 import 'package:mtg_archiver/core/presentation/providers/navigation_state.dart';
 import 'package:mtg_archiver/core/presentation/widgets/bottom_navigation_bar_widget.dart';
@@ -14,7 +15,18 @@ class MainPage extends ConsumerWidget {
     return Scaffold(
       primary: false,
       appBar: AppBar(),
-      bottomNavigationBar: const BottomNavigationBarWidget(),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              blurRadius: 6,
+              offset: const Offset(0, 2),
+              color: context.tertiaryColor,
+            ),
+          ],
+        ),
+        child: const BottomNavigationBarWidget(),
+      ),
       body: switch (navIndex.navbarItem) {
         NavbarItem.search => const SearchPage(),
         NavbarItem.favorites => const Center(

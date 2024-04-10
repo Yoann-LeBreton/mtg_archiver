@@ -13,11 +13,17 @@ abstract class AppTheme {
         bottomSheetTheme: const BottomSheetThemeData(
           backgroundColor: AppColors.white,
         ),
+        textSelectionTheme: const TextSelectionThemeData(
+          selectionColor: AppColors.mayaBlue,
+        ),
       );
 
   static ThemeData dark() => ThemeData(
         colorScheme: AppColorScheme.dark(),
         textTheme: AppTextTheme.regular(),
+        textSelectionTheme: const TextSelectionThemeData(
+          selectionColor: AppColors.marineBlue,
+        ),
       );
 
   static ThemeData highContrast() => ThemeData(
