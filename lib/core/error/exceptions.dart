@@ -9,3 +9,5 @@ class NotFoundException extends AppException {}
 class UnauthorizedException extends AppException {}
 
 class BadRequestException extends AppException {}
+
+class CacheException extends AppException {}

@@ -4,6 +4,7 @@ import 'package:mtg_archiver/core/extensions/context_extension.dart';
 import 'package:mtg_archiver/core/presentation/providers/navigation_provider.dart';
 import 'package:mtg_archiver/core/presentation/providers/navigation_state.dart';
 import 'package:mtg_archiver/core/presentation/widgets/bottom_navigation_bar_widget.dart';
+import 'package:mtg_archiver/features/cards/presentation/pages/favorites_page.dart';
 import 'package:mtg_archiver/features/cards/presentation/pages/search_page.dart';
 
 class MainPage extends ConsumerWidget {
@@ -29,9 +30,7 @@ class MainPage extends ConsumerWidget {
       ),
       body: switch (navIndex.navbarItem) {
         NavbarItem.search => const SearchPage(),
-        NavbarItem.favorites => const Center(
-            child: Text('Not implemented'),
-          ),
+        NavbarItem.favorites => const FavoritesPage(),
         NavbarItem.settings => const Center(
             child: Text('Not implemented'),
           ),

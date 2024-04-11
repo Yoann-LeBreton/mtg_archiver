@@ -20,12 +20,18 @@ ImageUrisModel _$ImageUrisModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ImageUrisModel {
+  @HiveField(0)
   String? get small => throw _privateConstructorUsedError;
+  @HiveField(1)
   String? get normal => throw _privateConstructorUsedError;
+  @HiveField(2)
   String? get large => throw _privateConstructorUsedError;
+  @HiveField(3)
   String? get png => throw _privateConstructorUsedError;
+  @HiveField(4)
   @JsonKey(name: 'art_crop')
   String? get artCrop => throw _privateConstructorUsedError;
+  @HiveField(5)
   @JsonKey(name: 'border_crop')
   String? get borderCrop => throw _privateConstructorUsedError;
 
@@ -42,12 +48,12 @@ abstract class $ImageUrisModelCopyWith<$Res> {
       _$ImageUrisModelCopyWithImpl<$Res, ImageUrisModel>;
   @useResult
   $Res call(
-      {String? small,
-      String? normal,
-      String? large,
-      String? png,
-      @JsonKey(name: 'art_crop') String? artCrop,
-      @JsonKey(name: 'border_crop') String? borderCrop});
+      {@HiveField(0) String? small,
+      @HiveField(1) String? normal,
+      @HiveField(2) String? large,
+      @HiveField(3) String? png,
+      @HiveField(4) @JsonKey(name: 'art_crop') String? artCrop,
+      @HiveField(5) @JsonKey(name: 'border_crop') String? borderCrop});
 }
 
 /// @nodoc
@@ -108,12 +114,12 @@ abstract class _$$ImageUrisModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? small,
-      String? normal,
-      String? large,
-      String? png,
-      @JsonKey(name: 'art_crop') String? artCrop,
-      @JsonKey(name: 'border_crop') String? borderCrop});
+      {@HiveField(0) String? small,
+      @HiveField(1) String? normal,
+      @HiveField(2) String? large,
+      @HiveField(3) String? png,
+      @HiveField(4) @JsonKey(name: 'art_crop') String? artCrop,
+      @HiveField(5) @JsonKey(name: 'border_crop') String? borderCrop});
 }
 
 /// @nodoc
@@ -165,30 +171,37 @@ class __$$ImageUrisModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 1)
 class _$ImageUrisModelImpl implements _ImageUrisModel {
   const _$ImageUrisModelImpl(
-      {this.small,
-      this.normal,
-      this.large,
-      this.png,
-      @JsonKey(name: 'art_crop') this.artCrop,
-      @JsonKey(name: 'border_crop') this.borderCrop});
+      {@HiveField(0) this.small,
+      @HiveField(1) this.normal,
+      @HiveField(2) this.large,
+      @HiveField(3) this.png,
+      @HiveField(4) @JsonKey(name: 'art_crop') this.artCrop,
+      @HiveField(5) @JsonKey(name: 'border_crop') this.borderCrop});
 
   factory _$ImageUrisModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ImageUrisModelImplFromJson(json);
 
   @override
+  @HiveField(0)
   final String? small;
   @override
+  @HiveField(1)
   final String? normal;
   @override
+  @HiveField(2)
   final String? large;
   @override
+  @HiveField(3)
   final String? png;
   @override
+  @HiveField(4)
   @JsonKey(name: 'art_crop')
   final String? artCrop;
   @override
+  @HiveField(5)
   @JsonKey(name: 'border_crop')
   final String? borderCrop;
 
@@ -233,29 +246,36 @@ class _$ImageUrisModelImpl implements _ImageUrisModel {
 
 abstract class _ImageUrisModel implements ImageUrisModel {
   const factory _ImageUrisModel(
-          {final String? small,
-          final String? normal,
-          final String? large,
-          final String? png,
-          @JsonKey(name: 'art_crop') final String? artCrop,
-          @JsonKey(name: 'border_crop') final String? borderCrop}) =
-      _$ImageUrisModelImpl;
+      {@HiveField(0) final String? small,
+      @HiveField(1) final String? normal,
+      @HiveField(2) final String? large,
+      @HiveField(3) final String? png,
+      @HiveField(4) @JsonKey(name: 'art_crop') final String? artCrop,
+      @HiveField(5)
+      @JsonKey(name: 'border_crop')
+      final String? borderCrop}) = _$ImageUrisModelImpl;
 
   factory _ImageUrisModel.fromJson(Map<String, dynamic> json) =
       _$ImageUrisModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   String? get small;
   @override
+  @HiveField(1)
   String? get normal;
   @override
+  @HiveField(2)
   String? get large;
   @override
+  @HiveField(3)
   String? get png;
   @override
+  @HiveField(4)
   @JsonKey(name: 'art_crop')
   String? get artCrop;
   @override
+  @HiveField(5)
   @JsonKey(name: 'border_crop')
   String? get borderCrop;
   @override

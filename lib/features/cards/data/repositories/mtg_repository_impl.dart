@@ -1,4 +1,6 @@
+import 'package:mtg_archiver/core/data/datasources/mtg_local_data_source.dart';
 import 'package:mtg_archiver/core/domain/entities/result.dart';
+import 'package:mtg_archiver/core/error/exceptions.dart';
 import 'package:mtg_archiver/features/cards/data/datasources/mtg_remote_data_source.dart';
 import 'package:mtg_archiver/features/cards/data/models/card_model.dart';
 import 'package:mtg_archiver/features/cards/data/models/search_cards_result_model.dart';
@@ -8,8 +10,12 @@ import 'package:mtg_archiver/features/cards/domain/entities/search_cards_result_
 import 'package:mtg_archiver/features/cards/domain/repositories/mtg_repository.dart';
 
 class MtgRepositoryImpl implements MtgRepository {
-  const MtgRepositoryImpl({required this.mtgRemoteDataSource});
+  const MtgRepositoryImpl({
+    required this.mtgRemoteDataSource,
+    required this.mtgLocalDataSource,
+  });
   final MtgRemoteDataSource mtgRemoteDataSource;
+  final MtgLocalDataSource mtgLocalDataSource;
 
   @override
   Future<Result<SearchCardsResultEntity>> searchByName({
@@ -42,4 +48,26 @@ class MtgRepositoryImpl implements MtgRepository {
             await mtgRemoteDataSource.cardById(cardId: cardId);
         return result.toDomain();
       });
+
+  @override
+  Future<Result<List<CardEntity>>> getLocalCards() async {
+    try {
+      final List<CardModel> result = await mtgLocalDataSource.getCards();
+      final List<CardEntity> list =
+          result.map((CardModel e) => e.toDomain()).toList();
+      return Result<List<CardEntity>>.success(data: list);
+    } catch (_) {
+      return Result<List<CardEntity>>.failure(exception: CacheException());
+    }
+  }
+
+  @override
+  Future<Result<void>> saveLocalCard({required CardEntity card}) async {
+    try {
+      await mtgLocalDataSource.saveCard(CardModel.fromDomain(card));
+      return const Result<void>.success(data: null);
+    } catch (_) {
+      return Result<List<CardEntity>>.failure(exception: CacheException());
+    }
+  }
 }

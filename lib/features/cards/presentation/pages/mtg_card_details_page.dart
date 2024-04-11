@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mtg_archiver/core/enums/legality_enum.dart';
+import 'package:mtg_archiver/core/presentation/widgets/icon_touchable_widget.dart';
 import 'package:mtg_archiver/core/presentation/widgets/loading_widget.dart';
 import 'package:mtg_archiver/core/theme/colors.dart';
 import 'package:mtg_archiver/core/theme/sizes.dart';
 import 'package:mtg_archiver/features/cards/domain/entities/card_entity.dart';
 import 'package:mtg_archiver/features/cards/domain/entities/legalities_entity.dart';
 import 'package:mtg_archiver/features/cards/domain/providers/details_provider.dart';
+import 'package:mtg_archiver/features/cards/domain/providers/favorites_provider.dart';
 
 class MtgCardDetailsPage extends ConsumerStatefulWidget {
   const MtgCardDetailsPage({
@@ -78,6 +80,14 @@ class _MtgCardDetailsPageState extends ConsumerState<MtgCardDetailsPage> {
                             style: const TextStyle(
                               fontSize: 12,
                             ),
+                          ),
+                          IconTouchableWidget(
+                            icon: Icons.star,
+                            horizontalPadding: 16,
+                            verticalPadding: 8,
+                            onTap: () {
+                              ref.read(saveLocalCardProvider(cardInfo));
+                            },
                           ),
                           if (cardInfo.legalities != null)
                             ...legalities(cardInfo.legalities!),
