@@ -29,4 +29,11 @@ final class MtgLocalDataSourceImpl implements MtgLocalDataSource {
     final Box<CardModel> cardsBox = hive.box<CardModel>(boxName);
     await cardsBox.put(card.id, card);
   }
+
+  @override
+  Future<CardModel?> getCardById({required String id}) async {
+    await hive.openBox<CardModel>(boxName);
+    final Box<CardModel> cardsBox = hive.box<CardModel>(boxName);
+    return cardsBox.get(id, defaultValue: null);
+  }
 }

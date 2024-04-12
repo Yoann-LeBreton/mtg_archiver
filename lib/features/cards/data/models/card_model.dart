@@ -49,6 +49,9 @@ class CardModel with _$CardModel {
         effect: entity.effect,
         colors: List.empty(),
         manaCost: '',
+        legalities: entity.legalities != null
+            ? LegalitiesModel.fromDomain(entity: entity.legalities!)
+            : null,
         imageUris: entity.imageUris != null
             ? ImageUrisModel.fromDomain(entity: entity.imageUris!)
             : null,

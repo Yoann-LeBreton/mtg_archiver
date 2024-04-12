@@ -6,4 +6,6 @@ abstract interface class MtgLocalDataSource {
   Future<void> saveCard(CardModel card);
 
   Future<List<CardModel>> getCards();
+
+  Future<CardModel?> getCardById({required String id});
 }

@@ -20,27 +20,49 @@ LegalitiesModel _$LegalitiesModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LegalitiesModel {
+  @HiveField(0)
   String get standard => throw _privateConstructorUsedError;
+  @HiveField(1)
   String get future => throw _privateConstructorUsedError;
+  @HiveField(2)
   String get historic => throw _privateConstructorUsedError;
+  @HiveField(3)
   String get timeless => throw _privateConstructorUsedError;
+  @HiveField(4)
   String get gladiator => throw _privateConstructorUsedError;
+  @HiveField(5)
   String get pioneer => throw _privateConstructorUsedError;
+  @HiveField(6)
   String get explorer => throw _privateConstructorUsedError;
+  @HiveField(7)
   String get modern => throw _privateConstructorUsedError;
+  @HiveField(8)
   String get legacy => throw _privateConstructorUsedError;
+  @HiveField(9)
   String get pauper => throw _privateConstructorUsedError;
+  @HiveField(10)
   String get vintage => throw _privateConstructorUsedError;
+  @HiveField(11)
   String get penny => throw _privateConstructorUsedError;
+  @HiveField(12)
   String get commander => throw _privateConstructorUsedError;
+  @HiveField(13)
   String get oathbreaker => throw _privateConstructorUsedError;
+  @HiveField(14)
   String get standardbrawl => throw _privateConstructorUsedError;
+  @HiveField(15)
   String get brawl => throw _privateConstructorUsedError;
+  @HiveField(16)
   String get alchemy => throw _privateConstructorUsedError;
+  @HiveField(17)
   String get paupercommander => throw _privateConstructorUsedError;
+  @HiveField(18)
   String get duel => throw _privateConstructorUsedError;
+  @HiveField(19)
   String get oldschool => throw _privateConstructorUsedError;
+  @HiveField(20)
   String get premodern => throw _privateConstructorUsedError;
+  @HiveField(21)
   String get predh => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -56,28 +78,28 @@ abstract class $LegalitiesModelCopyWith<$Res> {
       _$LegalitiesModelCopyWithImpl<$Res, LegalitiesModel>;
   @useResult
   $Res call(
-      {String standard,
-      String future,
-      String historic,
-      String timeless,
-      String gladiator,
-      String pioneer,
-      String explorer,
-      String modern,
-      String legacy,
-      String pauper,
-      String vintage,
-      String penny,
-      String commander,
-      String oathbreaker,
-      String standardbrawl,
-      String brawl,
-      String alchemy,
-      String paupercommander,
-      String duel,
-      String oldschool,
-      String premodern,
-      String predh});
+      {@HiveField(0) String standard,
+      @HiveField(1) String future,
+      @HiveField(2) String historic,
+      @HiveField(3) String timeless,
+      @HiveField(4) String gladiator,
+      @HiveField(5) String pioneer,
+      @HiveField(6) String explorer,
+      @HiveField(7) String modern,
+      @HiveField(8) String legacy,
+      @HiveField(9) String pauper,
+      @HiveField(10) String vintage,
+      @HiveField(11) String penny,
+      @HiveField(12) String commander,
+      @HiveField(13) String oathbreaker,
+      @HiveField(14) String standardbrawl,
+      @HiveField(15) String brawl,
+      @HiveField(16) String alchemy,
+      @HiveField(17) String paupercommander,
+      @HiveField(18) String duel,
+      @HiveField(19) String oldschool,
+      @HiveField(20) String premodern,
+      @HiveField(21) String predh});
 }
 
 /// @nodoc
@@ -218,28 +240,28 @@ abstract class _$$LegalitiesModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String standard,
-      String future,
-      String historic,
-      String timeless,
-      String gladiator,
-      String pioneer,
-      String explorer,
-      String modern,
-      String legacy,
-      String pauper,
-      String vintage,
-      String penny,
-      String commander,
-      String oathbreaker,
-      String standardbrawl,
-      String brawl,
-      String alchemy,
-      String paupercommander,
-      String duel,
-      String oldschool,
-      String premodern,
-      String predh});
+      {@HiveField(0) String standard,
+      @HiveField(1) String future,
+      @HiveField(2) String historic,
+      @HiveField(3) String timeless,
+      @HiveField(4) String gladiator,
+      @HiveField(5) String pioneer,
+      @HiveField(6) String explorer,
+      @HiveField(7) String modern,
+      @HiveField(8) String legacy,
+      @HiveField(9) String pauper,
+      @HiveField(10) String vintage,
+      @HiveField(11) String penny,
+      @HiveField(12) String commander,
+      @HiveField(13) String oathbreaker,
+      @HiveField(14) String standardbrawl,
+      @HiveField(15) String brawl,
+      @HiveField(16) String alchemy,
+      @HiveField(17) String paupercommander,
+      @HiveField(18) String duel,
+      @HiveField(19) String oldschool,
+      @HiveField(20) String premodern,
+      @HiveField(21) String predh});
 }
 
 /// @nodoc
@@ -371,77 +393,100 @@ class __$$LegalitiesModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 2)
 class _$LegalitiesModelImpl implements _LegalitiesModel {
   const _$LegalitiesModelImpl(
-      {required this.standard,
-      required this.future,
-      required this.historic,
-      required this.timeless,
-      required this.gladiator,
-      required this.pioneer,
-      required this.explorer,
-      required this.modern,
-      required this.legacy,
-      required this.pauper,
-      required this.vintage,
-      required this.penny,
-      required this.commander,
-      required this.oathbreaker,
-      required this.standardbrawl,
-      required this.brawl,
-      required this.alchemy,
-      required this.paupercommander,
-      required this.duel,
-      required this.oldschool,
-      required this.premodern,
-      required this.predh});
+      {@HiveField(0) required this.standard,
+      @HiveField(1) required this.future,
+      @HiveField(2) required this.historic,
+      @HiveField(3) required this.timeless,
+      @HiveField(4) required this.gladiator,
+      @HiveField(5) required this.pioneer,
+      @HiveField(6) required this.explorer,
+      @HiveField(7) required this.modern,
+      @HiveField(8) required this.legacy,
+      @HiveField(9) required this.pauper,
+      @HiveField(10) required this.vintage,
+      @HiveField(11) required this.penny,
+      @HiveField(12) required this.commander,
+      @HiveField(13) required this.oathbreaker,
+      @HiveField(14) required this.standardbrawl,
+      @HiveField(15) required this.brawl,
+      @HiveField(16) required this.alchemy,
+      @HiveField(17) required this.paupercommander,
+      @HiveField(18) required this.duel,
+      @HiveField(19) required this.oldschool,
+      @HiveField(20) required this.premodern,
+      @HiveField(21) required this.predh});
 
   factory _$LegalitiesModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$LegalitiesModelImplFromJson(json);
 
   @override
+  @HiveField(0)
   final String standard;
   @override
+  @HiveField(1)
   final String future;
   @override
+  @HiveField(2)
   final String historic;
   @override
+  @HiveField(3)
   final String timeless;
   @override
+  @HiveField(4)
   final String gladiator;
   @override
+  @HiveField(5)
   final String pioneer;
   @override
+  @HiveField(6)
   final String explorer;
   @override
+  @HiveField(7)
   final String modern;
   @override
+  @HiveField(8)
   final String legacy;
   @override
+  @HiveField(9)
   final String pauper;
   @override
+  @HiveField(10)
   final String vintage;
   @override
+  @HiveField(11)
   final String penny;
   @override
+  @HiveField(12)
   final String commander;
   @override
+  @HiveField(13)
   final String oathbreaker;
   @override
+  @HiveField(14)
   final String standardbrawl;
   @override
+  @HiveField(15)
   final String brawl;
   @override
+  @HiveField(16)
   final String alchemy;
   @override
+  @HiveField(17)
   final String paupercommander;
   @override
+  @HiveField(18)
   final String duel;
   @override
+  @HiveField(19)
   final String oldschool;
   @override
+  @HiveField(20)
   final String premodern;
   @override
+  @HiveField(21)
   final String predh;
 
   @override
@@ -534,75 +579,97 @@ class _$LegalitiesModelImpl implements _LegalitiesModel {
 
 abstract class _LegalitiesModel implements LegalitiesModel {
   const factory _LegalitiesModel(
-      {required final String standard,
-      required final String future,
-      required final String historic,
-      required final String timeless,
-      required final String gladiator,
-      required final String pioneer,
-      required final String explorer,
-      required final String modern,
-      required final String legacy,
-      required final String pauper,
-      required final String vintage,
-      required final String penny,
-      required final String commander,
-      required final String oathbreaker,
-      required final String standardbrawl,
-      required final String brawl,
-      required final String alchemy,
-      required final String paupercommander,
-      required final String duel,
-      required final String oldschool,
-      required final String premodern,
-      required final String predh}) = _$LegalitiesModelImpl;
+      {@HiveField(0) required final String standard,
+      @HiveField(1) required final String future,
+      @HiveField(2) required final String historic,
+      @HiveField(3) required final String timeless,
+      @HiveField(4) required final String gladiator,
+      @HiveField(5) required final String pioneer,
+      @HiveField(6) required final String explorer,
+      @HiveField(7) required final String modern,
+      @HiveField(8) required final String legacy,
+      @HiveField(9) required final String pauper,
+      @HiveField(10) required final String vintage,
+      @HiveField(11) required final String penny,
+      @HiveField(12) required final String commander,
+      @HiveField(13) required final String oathbreaker,
+      @HiveField(14) required final String standardbrawl,
+      @HiveField(15) required final String brawl,
+      @HiveField(16) required final String alchemy,
+      @HiveField(17) required final String paupercommander,
+      @HiveField(18) required final String duel,
+      @HiveField(19) required final String oldschool,
+      @HiveField(20) required final String premodern,
+      @HiveField(21) required final String predh}) = _$LegalitiesModelImpl;
 
   factory _LegalitiesModel.fromJson(Map<String, dynamic> json) =
       _$LegalitiesModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   String get standard;
   @override
+  @HiveField(1)
   String get future;
   @override
+  @HiveField(2)
   String get historic;
   @override
+  @HiveField(3)
   String get timeless;
   @override
+  @HiveField(4)
   String get gladiator;
   @override
+  @HiveField(5)
   String get pioneer;
   @override
+  @HiveField(6)
   String get explorer;
   @override
+  @HiveField(7)
   String get modern;
   @override
+  @HiveField(8)
   String get legacy;
   @override
+  @HiveField(9)
   String get pauper;
   @override
+  @HiveField(10)
   String get vintage;
   @override
+  @HiveField(11)
   String get penny;
   @override
+  @HiveField(12)
   String get commander;
   @override
+  @HiveField(13)
   String get oathbreaker;
   @override
+  @HiveField(14)
   String get standardbrawl;
   @override
+  @HiveField(15)
   String get brawl;
   @override
+  @HiveField(16)
   String get alchemy;
   @override
+  @HiveField(17)
   String get paupercommander;
   @override
+  @HiveField(18)
   String get duel;
   @override
+  @HiveField(19)
   String get oldschool;
   @override
+  @HiveField(20)
   String get premodern;
   @override
+  @HiveField(21)
   String get predh;
   @override
   @JsonKey(ignore: true)

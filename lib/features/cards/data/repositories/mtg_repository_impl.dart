@@ -44,6 +44,11 @@ class MtgRepositoryImpl implements MtgRepository {
   @override
   Future<Result<CardEntity>> getCardById({required String cardId}) =>
       runCatchingAsync(() async {
+        final CardModel? localData =
+            await mtgLocalDataSource.getCardById(id: cardId);
+        if (localData != null) {
+          return localData.toDomain();
+        }
         final CardModel result =
             await mtgRemoteDataSource.cardById(cardId: cardId);
         return result.toDomain();
