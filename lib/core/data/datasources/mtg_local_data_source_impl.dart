@@ -36,4 +36,18 @@ final class MtgLocalDataSourceImpl implements MtgLocalDataSource {
     final Box<CardModel> cardsBox = hive.box<CardModel>(boxName);
     return cardsBox.get(id, defaultValue: null);
   }
+
+  @override
+  Future<void> deleteCard({required String id}) async {
+    await hive.openBox<CardModel>(boxName);
+    final Box<CardModel> cardsBox = hive.box<CardModel>(boxName);
+    return cardsBox.delete(id);
+  }
+
+  @override
+  Future<bool> isLocal({required String id}) async {
+    await hive.openBox<CardModel>(boxName);
+    final Box<CardModel> cardsBox = hive.box<CardModel>(boxName);
+    return cardsBox.containsKey(id);
+  }
 }

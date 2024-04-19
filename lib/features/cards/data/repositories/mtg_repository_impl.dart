@@ -47,7 +47,7 @@ class MtgRepositoryImpl implements MtgRepository {
         final CardModel? localData =
             await mtgLocalDataSource.getCardById(id: cardId);
         if (localData != null) {
-          return localData.toDomain();
+          return localData.toDomain(isFavorite: true);
         }
         final CardModel result =
             await mtgRemoteDataSource.cardById(cardId: cardId);
@@ -72,7 +72,27 @@ class MtgRepositoryImpl implements MtgRepository {
       await mtgLocalDataSource.saveCard(CardModel.fromDomain(card));
       return const Result<void>.success(data: null);
     } catch (_) {
-      return Result<List<CardEntity>>.failure(exception: CacheException());
+      return Result<void>.failure(exception: CacheException());
+    }
+  }
+
+  @override
+  Future<Result<void>> removeLocalCard({required String cardId}) async {
+    try {
+      await mtgLocalDataSource.deleteCard(id: cardId);
+      return const Result<void>.success(data: null);
+    } catch (_) {
+      return Result<void>.failure(exception: CacheException());
+    }
+  }
+
+  @override
+  Future<Result<bool>> isLocalCard({required String cardId}) async {
+    try {
+      final bool isLocal = await mtgLocalDataSource.isLocal(id: cardId);
+      return Result<bool>.success(data: isLocal);
+    } catch (_) {
+      return Result<bool>.failure(exception: CacheException());
     }
   }
 }

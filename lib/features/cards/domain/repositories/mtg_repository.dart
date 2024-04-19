@@ -30,5 +30,9 @@ abstract interface class MtgRepository {
 
   Future<Result<void>> saveLocalCard({required CardEntity card});
 
+  Future<Result<bool>> isLocalCard({required String cardId});
+
+  Future<Result<void>> removeLocalCard({required String cardId});
+
   Future<Result<List<CardEntity>>> getLocalCards();
 }

@@ -59,7 +59,7 @@ class CardModel with _$CardModel {
 }
 
 extension CardModelX on CardModel {
-  CardEntity toDomain() => CardEntity(
+  CardEntity toDomain({bool isFavorite = false}) => CardEntity(
         id: id,
         name: name,
         releaseDate: releaseDate,
@@ -75,5 +75,6 @@ extension CardModelX on CardModel {
         manaCost: manaCost.convertToManas(),
         legalities: legalities?.toDomain(),
         imageUris: imageUris?.toDomain(),
+        isFavorite: isFavorite,
       );
 }

@@ -6,7 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'favorites_provider.g.dart';
 
 @riverpod
-Future<List<CardEntity>> getLocalCard(GetLocalCardRef ref) async {
+Future<List<CardEntity>> getLocalCards(GetLocalCardsRef ref) async {
   final Result<List<CardEntity>> result =
       await ref.watch(mtgRepositoryProvider).getLocalCards();
   return result.when(
@@ -14,7 +14,3 @@ Future<List<CardEntity>> getLocalCard(GetLocalCardRef ref) async {
     failure: (Exception ex) => throw ex,
   );
 }
-
-@riverpod
-Future<void> saveLocalCard(SaveLocalCardRef ref, CardEntity card) async =>
-    await ref.watch(mtgRepositoryProvider).saveLocalCard(card: card);

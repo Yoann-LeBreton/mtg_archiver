@@ -7,18 +7,19 @@ import 'package:mtg_archiver/features/cards/domain/entities/card_entity.dart';
 import 'package:mtg_archiver/features/cards/domain/providers/favorites_provider.dart';
 import 'package:mtg_archiver/features/cards/presentation/widgets/card_list_widget.dart';
 
-class FavoritesPage extends ConsumerStatefulWidget {
+class FavoritesPage extends ConsumerWidget {
   const FavoritesPage({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _FavoritesPage();
-}
-
-class _FavoritesPage extends ConsumerState<FavoritesPage> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final AsyncValue<List<CardEntity>> favoriteCardsState =
-        ref.watch(getLocalCardProvider);
+        ref.watch(getLocalCardsProvider);
+    ref.listen(getLocalCardsProvider, (_, AsyncValue<List<CardEntity>> next) {
+      if (next is AsyncError) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('Error: ${next.error}')));
+      }
+    });
     return favoriteCardsState.when(
       data: (List<CardEntity> cards) {
         return Expanded(
@@ -36,7 +37,7 @@ class _FavoritesPage extends ConsumerState<FavoritesPage> {
                         RouteList.argCardName: cardName,
                         RouteList.argCardId: cardId,
                       },
-                    );
+                    ).then((_) => ref.refresh(getLocalCardsProvider));
                   },
                   onNextPage: () {},
                 )

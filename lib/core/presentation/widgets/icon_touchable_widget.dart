@@ -7,10 +7,12 @@ class IconTouchableWidget extends StatelessWidget {
     required this.horizontalPadding,
     required this.verticalPadding,
     required this.onTap,
+    this.iconSize,
     super.key,
   });
 
   final IconData icon;
+  final double? iconSize;
   final double horizontalPadding;
   final double verticalPadding;
   final VoidCallback onTap;
@@ -26,6 +28,7 @@ class IconTouchableWidget extends StatelessWidget {
         ),
         child: Icon(
           icon,
+          size: iconSize,
           color: context.primaryColor,
         ),
       ),
