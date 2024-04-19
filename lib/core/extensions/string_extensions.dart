@@ -43,7 +43,8 @@ extension StringExtension on String {
 
   Legality convertToLegality() {
     return Legality.values.firstWhereOrNull(
-            (Legality legality) => legality.apiValue == this) ??
+          (Legality legality) => legality.apiValue == this,
+        ) ??
         Legality.unknown;
   }
 }

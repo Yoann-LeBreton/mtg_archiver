@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mtg_archiver/core/enums/legality_enum.dart';
+import 'package:mtg_archiver/core/presentation/widgets/icon_touchable_widget.dart';
 import 'package:mtg_archiver/core/presentation/widgets/loading_widget.dart';
 import 'package:mtg_archiver/core/theme/colors.dart';
 import 'package:mtg_archiver/core/theme/sizes.dart';
 import 'package:mtg_archiver/features/cards/domain/entities/card_entity.dart';
 import 'package:mtg_archiver/features/cards/domain/entities/legalities_entity.dart';
+import 'package:mtg_archiver/features/cards/domain/notifiers/favorite_card_notifier.dart';
 import 'package:mtg_archiver/features/cards/domain/providers/details_provider.dart';
 
 class MtgCardDetailsPage extends ConsumerStatefulWidget {
@@ -44,6 +46,8 @@ class _MtgCardDetailsPageState extends ConsumerState<MtgCardDetailsPage> {
   Widget build(BuildContext context) {
     final AsyncValue<CardEntity> detailState =
         ref.watch(detailsProvider(widget.cardId));
+    final bool favState = ref.watch(favoriteCardNotifProvider(widget.cardId));
+
     return Scaffold(
       body: SafeArea(
         child: detailState.when(
@@ -79,8 +83,33 @@ class _MtgCardDetailsPageState extends ConsumerState<MtgCardDetailsPage> {
                               fontSize: 12,
                             ),
                           ),
+                          IconTouchableWidget(
+                            icon: favState ? Icons.star : Icons.star_border,
+                            iconSize: 32,
+                            horizontalPadding: 16,
+                            verticalPadding: 8,
+                            onTap: () {
+                              if (favState) {
+                                ref
+                                    .read(
+                                      favoriteCardNotifProvider(
+                                        widget.cardId,
+                                      ).notifier,
+                                    )
+                                    .deleteLocalCard();
+                              } else {
+                                ref
+                                    .read(
+                                      favoriteCardNotifProvider(
+                                        widget.cardId,
+                                      ).notifier,
+                                    )
+                                    .saveLocalCard(cardInfo);
+                              }
+                            },
+                          ),
                           if (cardInfo.legalities != null)
-                            ...legalities(cardInfo.legalities!),
+                            legalities(cardInfo.legalities!),
                         ],
                       ),
                     ),
@@ -96,28 +125,38 @@ class _MtgCardDetailsPageState extends ConsumerState<MtgCardDetailsPage> {
     );
   }
 
-  List<Widget> legalities(LegalitiesEntity legalities) {
-    final List<Widget> legals = <Widget>[];
-    legalities.toMap().forEach((String key, Legality value) {
-      legals.add(
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+  Widget legalities(LegalitiesEntity legalities) {
+    final Map<String, Legality> map = legalities.toMap();
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 3,
+      ),
+      itemCount: map.length,
+      itemBuilder: (BuildContext context, int index) {
+        final String key = map.keys.elementAt(index);
+        return Row(
           children: <Widget>[
-            Container(
-              padding: EdgeInsets.all(Spacing.base.value),
-              color: AppColors.inactiveGrey,
-              child: Text(key),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.all(Spacing.base.value),
+                color: AppColors.inactiveGrey,
+                child: Text(key),
+              ),
             ),
-            Container(
-              padding: EdgeInsets.all(Spacing.base.value),
-              color: value.backgroundColor,
-              child: Text(value.name),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.all(Spacing.base.value),
+                color: map[key]?.backgroundColor,
+                child: Text(map[key]?.name ?? ''),
+              ),
             ),
           ],
-        ),
-      );
-    });
-    return legals;
+        );
+      },
+    );
   }
 
   void _scrollListener() {

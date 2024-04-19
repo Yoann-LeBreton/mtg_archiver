@@ -20,22 +20,31 @@ CardModel _$CardModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CardModel {
+  @HiveField(0)
   @JsonKey(name: 'id', defaultValue: '')
   String get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   @JsonKey(name: 'name', defaultValue: '')
   String get name => throw _privateConstructorUsedError;
+  @HiveField(3)
   @JsonKey(name: 'released_at', defaultValue: '')
   String get releaseDate => throw _privateConstructorUsedError;
+  @HiveField(4)
   @JsonKey(name: 'type_line', defaultValue: '')
   String get type => throw _privateConstructorUsedError;
+  @HiveField(5)
   @JsonKey(name: 'oracle_text', defaultValue: '')
   String get effect => throw _privateConstructorUsedError;
+  @HiveField(6)
   @JsonKey(name: 'colors', defaultValue: <String>[])
   List<String> get colors => throw _privateConstructorUsedError;
+  @HiveField(7)
   @JsonKey(name: 'mana_cost', defaultValue: '')
   String get manaCost => throw _privateConstructorUsedError;
+  @HiveField(8)
   @JsonKey(name: 'legalities', defaultValue: null)
   LegalitiesModel? get legalities => throw _privateConstructorUsedError;
+  @HiveField(9)
   @JsonKey(name: 'image_uris', defaultValue: null)
   ImageUrisModel? get imageUris => throw _privateConstructorUsedError;
 
@@ -51,15 +60,25 @@ abstract class $CardModelCopyWith<$Res> {
       _$CardModelCopyWithImpl<$Res, CardModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'id', defaultValue: '') String id,
-      @JsonKey(name: 'name', defaultValue: '') String name,
-      @JsonKey(name: 'released_at', defaultValue: '') String releaseDate,
-      @JsonKey(name: 'type_line', defaultValue: '') String type,
-      @JsonKey(name: 'oracle_text', defaultValue: '') String effect,
-      @JsonKey(name: 'colors', defaultValue: <String>[]) List<String> colors,
-      @JsonKey(name: 'mana_cost', defaultValue: '') String manaCost,
+      {@HiveField(0) @JsonKey(name: 'id', defaultValue: '') String id,
+      @HiveField(1) @JsonKey(name: 'name', defaultValue: '') String name,
+      @HiveField(3)
+      @JsonKey(name: 'released_at', defaultValue: '')
+      String releaseDate,
+      @HiveField(4) @JsonKey(name: 'type_line', defaultValue: '') String type,
+      @HiveField(5)
+      @JsonKey(name: 'oracle_text', defaultValue: '')
+      String effect,
+      @HiveField(6)
+      @JsonKey(name: 'colors', defaultValue: <String>[])
+      List<String> colors,
+      @HiveField(7)
+      @JsonKey(name: 'mana_cost', defaultValue: '')
+      String manaCost,
+      @HiveField(8)
       @JsonKey(name: 'legalities', defaultValue: null)
       LegalitiesModel? legalities,
+      @HiveField(9)
       @JsonKey(name: 'image_uris', defaultValue: null)
       ImageUrisModel? imageUris});
 
@@ -164,15 +183,25 @@ abstract class _$$CardModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'id', defaultValue: '') String id,
-      @JsonKey(name: 'name', defaultValue: '') String name,
-      @JsonKey(name: 'released_at', defaultValue: '') String releaseDate,
-      @JsonKey(name: 'type_line', defaultValue: '') String type,
-      @JsonKey(name: 'oracle_text', defaultValue: '') String effect,
-      @JsonKey(name: 'colors', defaultValue: <String>[]) List<String> colors,
-      @JsonKey(name: 'mana_cost', defaultValue: '') String manaCost,
+      {@HiveField(0) @JsonKey(name: 'id', defaultValue: '') String id,
+      @HiveField(1) @JsonKey(name: 'name', defaultValue: '') String name,
+      @HiveField(3)
+      @JsonKey(name: 'released_at', defaultValue: '')
+      String releaseDate,
+      @HiveField(4) @JsonKey(name: 'type_line', defaultValue: '') String type,
+      @HiveField(5)
+      @JsonKey(name: 'oracle_text', defaultValue: '')
+      String effect,
+      @HiveField(6)
+      @JsonKey(name: 'colors', defaultValue: <String>[])
+      List<String> colors,
+      @HiveField(7)
+      @JsonKey(name: 'mana_cost', defaultValue: '')
+      String manaCost,
+      @HiveField(8)
       @JsonKey(name: 'legalities', defaultValue: null)
       LegalitiesModel? legalities,
+      @HiveField(9)
       @JsonKey(name: 'image_uris', defaultValue: null)
       ImageUrisModel? imageUris});
 
@@ -246,40 +275,60 @@ class __$$CardModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 0)
 class _$CardModelImpl implements _CardModel {
   const _$CardModelImpl(
-      {@JsonKey(name: 'id', defaultValue: '') required this.id,
-      @JsonKey(name: 'name', defaultValue: '') required this.name,
-      @JsonKey(name: 'released_at', defaultValue: '') required this.releaseDate,
-      @JsonKey(name: 'type_line', defaultValue: '') required this.type,
-      @JsonKey(name: 'oracle_text', defaultValue: '') required this.effect,
+      {@HiveField(0) @JsonKey(name: 'id', defaultValue: '') required this.id,
+      @HiveField(1) @JsonKey(name: 'name', defaultValue: '') required this.name,
+      @HiveField(3)
+      @JsonKey(name: 'released_at', defaultValue: '')
+      required this.releaseDate,
+      @HiveField(4)
+      @JsonKey(name: 'type_line', defaultValue: '')
+      required this.type,
+      @HiveField(5)
+      @JsonKey(name: 'oracle_text', defaultValue: '')
+      required this.effect,
+      @HiveField(6)
       @JsonKey(name: 'colors', defaultValue: <String>[])
       required final List<String> colors,
-      @JsonKey(name: 'mana_cost', defaultValue: '') required this.manaCost,
-      @JsonKey(name: 'legalities', defaultValue: null) this.legalities,
-      @JsonKey(name: 'image_uris', defaultValue: null) this.imageUris})
+      @HiveField(7)
+      @JsonKey(name: 'mana_cost', defaultValue: '')
+      required this.manaCost,
+      @HiveField(8)
+      @JsonKey(name: 'legalities', defaultValue: null)
+      this.legalities,
+      @HiveField(9)
+      @JsonKey(name: 'image_uris', defaultValue: null)
+      this.imageUris})
       : _colors = colors;
 
   factory _$CardModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CardModelImplFromJson(json);
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'id', defaultValue: '')
   final String id;
   @override
+  @HiveField(1)
   @JsonKey(name: 'name', defaultValue: '')
   final String name;
   @override
+  @HiveField(3)
   @JsonKey(name: 'released_at', defaultValue: '')
   final String releaseDate;
   @override
+  @HiveField(4)
   @JsonKey(name: 'type_line', defaultValue: '')
   final String type;
   @override
+  @HiveField(5)
   @JsonKey(name: 'oracle_text', defaultValue: '')
   final String effect;
   final List<String> _colors;
   @override
+  @HiveField(6)
   @JsonKey(name: 'colors', defaultValue: <String>[])
   List<String> get colors {
     if (_colors is EqualUnmodifiableListView) return _colors;
@@ -288,12 +337,15 @@ class _$CardModelImpl implements _CardModel {
   }
 
   @override
+  @HiveField(7)
   @JsonKey(name: 'mana_cost', defaultValue: '')
   final String manaCost;
   @override
+  @HiveField(8)
   @JsonKey(name: 'legalities', defaultValue: null)
   final LegalitiesModel? legalities;
   @override
+  @HiveField(9)
   @JsonKey(name: 'image_uris', defaultValue: null)
   final ImageUrisModel? imageUris;
 
@@ -352,19 +404,31 @@ class _$CardModelImpl implements _CardModel {
 
 abstract class _CardModel implements CardModel {
   const factory _CardModel(
-      {@JsonKey(name: 'id', defaultValue: '') required final String id,
-      @JsonKey(name: 'name', defaultValue: '') required final String name,
+      {@HiveField(0)
+      @JsonKey(name: 'id', defaultValue: '')
+      required final String id,
+      @HiveField(1)
+      @JsonKey(name: 'name', defaultValue: '')
+      required final String name,
+      @HiveField(3)
       @JsonKey(name: 'released_at', defaultValue: '')
       required final String releaseDate,
-      @JsonKey(name: 'type_line', defaultValue: '') required final String type,
+      @HiveField(4)
+      @JsonKey(name: 'type_line', defaultValue: '')
+      required final String type,
+      @HiveField(5)
       @JsonKey(name: 'oracle_text', defaultValue: '')
       required final String effect,
+      @HiveField(6)
       @JsonKey(name: 'colors', defaultValue: <String>[])
       required final List<String> colors,
+      @HiveField(7)
       @JsonKey(name: 'mana_cost', defaultValue: '')
       required final String manaCost,
+      @HiveField(8)
       @JsonKey(name: 'legalities', defaultValue: null)
       final LegalitiesModel? legalities,
+      @HiveField(9)
       @JsonKey(name: 'image_uris', defaultValue: null)
       final ImageUrisModel? imageUris}) = _$CardModelImpl;
 
@@ -372,30 +436,39 @@ abstract class _CardModel implements CardModel {
       _$CardModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'id', defaultValue: '')
   String get id;
   @override
+  @HiveField(1)
   @JsonKey(name: 'name', defaultValue: '')
   String get name;
   @override
+  @HiveField(3)
   @JsonKey(name: 'released_at', defaultValue: '')
   String get releaseDate;
   @override
+  @HiveField(4)
   @JsonKey(name: 'type_line', defaultValue: '')
   String get type;
   @override
+  @HiveField(5)
   @JsonKey(name: 'oracle_text', defaultValue: '')
   String get effect;
   @override
+  @HiveField(6)
   @JsonKey(name: 'colors', defaultValue: <String>[])
   List<String> get colors;
   @override
+  @HiveField(7)
   @JsonKey(name: 'mana_cost', defaultValue: '')
   String get manaCost;
   @override
+  @HiveField(8)
   @JsonKey(name: 'legalities', defaultValue: null)
   LegalitiesModel? get legalities;
   @override
+  @HiveField(9)
   @JsonKey(name: 'image_uris', defaultValue: null)
   ImageUrisModel? get imageUris;
   @override
