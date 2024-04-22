@@ -47,7 +47,7 @@ class CardModel with _$CardModel {
         releaseDate: entity.releaseDate,
         type: entity.type,
         effect: entity.effect,
-        colors: List.empty(),
+        colors: List<String>.empty(),
         manaCost: '',
         legalities: entity.legalities != null
             ? LegalitiesModel.fromDomain(entity: entity.legalities!)

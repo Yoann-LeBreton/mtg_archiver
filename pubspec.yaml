@@ -79,6 +79,9 @@ dev_dependencies:
   # https://pub.dev/packages/hive_generator
   hive_generator: ^2.0.1
 
+  # https://pub.dev/packages/mocktail
+  mocktail: ^1.0.3
+
   # https://pub.dev/packages/json_serializable
   json_serializable: ^6.7.1
 
