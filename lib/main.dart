@@ -5,13 +5,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
 import 'package:mtg_archiver/core/data/datasources/mtg_local_data_source_impl.dart';
+import 'package:mtg_archiver/core/di/injection_providers.dart';
+import 'package:mtg_archiver/core/di/register_module.dart';
 import 'package:mtg_archiver/core/extensions/context_extension.dart';
+import 'package:mtg_archiver/core/presentation/providers/settings_state.dart';
 import 'package:mtg_archiver/core/router/app_router.dart';
 import 'package:mtg_archiver/core/theme/app_theme.dart';
-
-import 'core/di/injection_providers.dart';
-import 'core/di/register_module.dart';
-import 'core/presentation/providers/settings_state.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

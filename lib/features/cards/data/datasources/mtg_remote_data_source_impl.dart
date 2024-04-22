@@ -11,8 +11,9 @@ final class MtgRemoteDataSourceImpl extends RemoteDataSource
   MtgRemoteDataSourceImpl({required super.dio});
 
   @override
-  Future<SearchCardsResultModel> searchCard(
-      {required SearchQueryModel searchQuery}) async {
+  Future<SearchCardsResultModel> searchCard({
+    required SearchQueryModel searchQuery,
+  }) async {
     final Map<String, dynamic> queryParams = <String, dynamic>{
       'q': searchQuery.searchText,
       'order': searchQuery.order ?? ScryfallApiConstants.searchSortByName,
